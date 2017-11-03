@@ -2,11 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use EasyWeChat\Foundation\Application;
 use Illuminate\Http\Request;
 use Log;
 
 class WechatController extends Controller
 {
+    public $wechat;
+
+    /**
+     * WechatController constructor.
+     * @param $wechat
+     */
+    public function __construct(Application $wechat)
+    {
+        $this->wechat = $wechat;
+    }
+
 
     /**
      * 处理微信的请求消息
@@ -63,7 +75,8 @@ class WechatController extends Controller
      */
     public function index()
     {
-        //
+        $users = $this->wechat->user->lists();
+        return $users;
     }
 
     /**
