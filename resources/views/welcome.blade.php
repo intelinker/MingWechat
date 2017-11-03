@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <!doctype html>
 <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
 {{--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">--}}
@@ -129,31 +130,31 @@
                 <div>
                     <label class="seat_line">1</label>
 
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat_unavailable.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat_unavailable.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat_unavailable.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat_unavailable.png" ></a>
                 </div>
 
                 <div>
                     <label class="seat_line">2</label>
 
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat_unavailable.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat_unavailable.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat_unavailable.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat_unavailable.png" ></a>
                 </div>
 
                 <div>
                     <label class="seat_line">3</label>
 
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat_unavailable.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat_unavailable.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat_unavailable.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat_unavailable.png" ></a>
                 </div>
 
 
