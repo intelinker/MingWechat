@@ -52,6 +52,7 @@
             .title {
                 font-size: 24px;
                 font-weight: 400;
+                margin-top: 80px;
             }
 
             .links > a {
@@ -73,7 +74,7 @@
             }
 
             .seat_row {
-                margin-right: 53px;
+                margin-right: 43px;
             }
 
             .seat_line {
