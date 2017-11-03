@@ -13,9 +13,9 @@ class MenuController extends Controller
      * MenuController constructor.
      * @param $menu
      */
-    public function __construct(Application $menu)
+    public function __construct(Application $app)
     {
-        $this->menu = $menu;
+        $this->menu = $app->menu;
     }
 
 
