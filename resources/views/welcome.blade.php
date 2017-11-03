@@ -1,4 +1,7 @@
 <!doctype html>
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+{{--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">--}}
+
 <html lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="utf-8">
@@ -17,7 +20,7 @@
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
-                height: 100vh;
+                height: 10vh;
                 margin: 0;
             }
 
@@ -46,7 +49,8 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 24px;
+                font-weight: 400;
             }
 
             .links > a {
@@ -62,10 +66,35 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .seat {
+                margin: 10px;
+            }
+
+            .seat_row {
+                margin-right: 53px;
+            }
+
+            .seat_line {
+                margin-right: 10px;
+                text-align: center;
+            }
+
+            .plat {
+                /*border-style: solid;*/
+                /*border: 10px;*/
+                /*border-color: #2ab27b;*/
+                padding-left: 50px;
+                padding-right: 50px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                border:2px solid #2ab27b;
+            }
         </style>
     </head>
+
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -79,16 +108,66 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    选 座 购 票
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                {{--<div class="jumbotron">--}}
+                    {{--<img class="media-object" width="150" height="100" alt="舞台" src="/photos/actors.png" >--}}
+                {{--</div>--}}
+
+                <label class="plat">舞台</label>
+
+                <div style="margin-bottom: 20px; margin-top: 20px">
+                    <label class="seat_row"></label>
+                    <label class="seat_row">A</label>
+                    <label class="seat_row">B</label>
+                    <label class="seat_row">C</label>
+                    <label class="seat_row">D</label>
+                    <label class="seat_row">E</label>
                 </div>
+
+                <div>
+                    <label class="seat_line">1</label>
+
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat_unavailable.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat_unavailable.png" ></a>
+                </div>
+
+                <div>
+                    <label class="seat_line">2</label>
+
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat_unavailable.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat_unavailable.png" ></a>
+                </div>
+
+                <div>
+                    <label class="seat_line">3</label>
+
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat_unavailable.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="50" height="50" alt="座位" src="/photos/seat_unavailable.png" ></a>
+                </div>
+
+
+                {{--<button type="button" class="btn btn-default" aria-label="Left Align">--}}
+                    {{--<span class="glyphicon glyphicon-modal-window"  aria-hidden="true"></span>--}}
+                {{--</button>--}}
+
+                {{--<div class="links">--}}
+                    {{--<a href="https://laravel.com/docs">Documentation</a>--}}
+                    {{--<a href="https://laracasts.com">Laracasts</a>--}}
+                    {{--<a href="https://laravel-news.com">News</a>--}}
+                    {{--<a href="https://forge.laravel.com">Forge</a>--}}
+                    {{--<a href="https://github.com/laravel/laravel">GitHub</a>--}}
+                {{--</div>--}}
             </div>
         </div>
     </body>
