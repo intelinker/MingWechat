@@ -19,6 +19,9 @@ Route::any('/wechat', 'WechatController@serve');
 
 Route::group(['middleware' => ['web']], function () {
     Route::resource('users', 'WechatController');
+    Route::get('remarkuser/{openid}/{mark}', 'WechatController@remarkUser');
+    Route::resource('menu', 'MenuController');
+
 });
 
 Route::group(['middleware' => ['web', 'wechat.oauth']], function () {

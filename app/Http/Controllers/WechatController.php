@@ -145,4 +145,8 @@ class WechatController extends Controller
     {
         //
     }
+
+    public function remarkUser($openid, $mark) {
+        $this->wechat->user->remark($openid, $mark);
+    }
 }
