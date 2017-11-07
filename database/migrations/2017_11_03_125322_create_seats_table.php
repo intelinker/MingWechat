@@ -23,7 +23,7 @@ class CreateSeatsTable extends Migration
             $table->integer('buyer_id')->default(0)->references('openid')->on('users')->onDelete('cascade');
             $table->integer('line');
             $table->integer('row');
-            $table->time('playtime')->nullable();
+            $table->dateTime('playtime')->nullable();
             $table->float('price')->default(0);
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));

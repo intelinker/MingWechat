@@ -172,13 +172,13 @@ class SeatController extends Controller
 
 
     public function orderSeat($seatid) {
-//        var_dump($seatid);
         $seat = Seat::findOrFail($seatid);
+//        dd($seat->playtime);
 
         $product = [
             'trade_type'       => 'JSAPI', // JSAPI，NATIVE，APP...
             'body'             => '舍得茶馆座票:'.$seat->description,
-            'detail'           => '开场时间:'.date('Y.m.d H:i:s',$seat->playtime),
+            'detail'           => '开场时间:'.$seat->playtime,
             'out_trade_no'     => strtotime('now') * 1990 + 2017,
             'total_fee'        => $seat->price,
             'notify_url'       => '/buyseat/'.$seat->id, // 支付结果通知网址，如果不设置则会使用配置里的默认地址，我就没有在这里配，因为在.env内已经配置了。
