@@ -41,23 +41,23 @@ class MenuController extends Controller
                 "type" => "click",
                 "name" => "茶文雅集",
                 "key"  => "CHA_WEN_YA_JI",
-                "sub_button" => [
-                    [
-                        "type" => "view",
-                        "name" => "二级1",
-                        "url"  => "http://www.soso.com/"
-                    ],
-                    [
-                        "type" => "view",
-                        "name" => "二级2",
-                        "url"  => "http://v.qq.com/"
-                    ],
-                    [
-                        "type" => "click",
-                        "name" => "二级3",
-                        "key" => "V1001_GOOD"
-                    ],
-                ],
+//                "sub_button" => [
+//                    [
+//                        "type" => "view",
+//                        "name" => "微杂志",
+//                        "url"  => "http://www.soso.com/"
+//                    ],
+//                    [
+//                        "type" => "view",
+//                        "name" => "掌柜说",
+//                        "url"  => "http://v.qq.com/"
+//                    ],
+//                    [
+//                        "type" => "click",
+//                        "name" => "文章搜索",
+//                        "key" => "V1001_GOOD"
+//                    ],
+//                ],
 
             ],
             [
@@ -67,18 +67,18 @@ class MenuController extends Controller
                 "sub_button" => [
                     [
                         "type" => "view",
-                        "name" => "购票",
+                        "name" => "节目预告",
                         "url"  => "http://ming.cure4.net/"
                     ],
                     [
                         "type" => "view",
-                        "name" => "二级2",
+                        "name" => "在线购票",
                         "url"  => "http://v.qq.com/"
                     ],
                     [
-                        "type" => "click",
-                        "name" => "二级3",
-                        "key" => "V1001_GOOD"
+                        "type" => "view",
+                        "name" => "往期集锦",
+                        "key" => "http://www.soso.com/"
                     ],
                 ],
             ],
@@ -86,23 +86,23 @@ class MenuController extends Controller
                 "type" => "click",
                 "name"       => "茗品荟萃",
                 "key"  => "MING_PIN_HUI_CUI",
-                "sub_button" => [
-                    [
-                        "type" => "view",
-                        "name" => "二级1",
-                        "url"  => "http://www.soso.com/"
-                    ],
-                    [
-                        "type" => "view",
-                        "name" => "二级2",
-                        "url"  => "http://v.qq.com/"
-                    ],
-                    [
-                        "type" => "click",
-                        "name" => "二级3",
-                        "key" => "V1001_GOOD"
-                    ],
-                ],
+//                "sub_button" => [
+//                    [
+//                        "type" => "view",
+//                        "name" => "在线商城",
+//                        "url"  => "http://www.soso.com/"
+//                    ],
+//                    [
+//                        "type" => "view",
+//                        "name" => "本月推荐",
+//                        "url"  => "http://v.qq.com/"
+//                    ],
+//                    [
+//                        "type" => "click",
+//                        "name" => "寻茶记",
+//                        "key" => "V1001_GOOD"
+//                    ],
+//                ],
             ],
         ];
         $this->menu->add($buttons);

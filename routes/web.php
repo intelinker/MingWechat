@@ -11,16 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::any('/wechat', 'WechatController@serve');
 
 Route::group(['middleware' => ['web']], function () {
+    Route::get('/', 'ArticleController@index');
     Route::resource('users', 'WechatController');
     Route::get('remarkuser/{openid}/{mark}', 'WechatController@remarkUser');
     Route::resource('menu', 'MenuController');
+    Route::resource('seats', 'SeatController');
+    Route::resource('articles', 'ArticleController');
+    Route::get('getseats/{theatre}', 'SeatController@getSeatsForTheartre');
+    Route::get('orderseat/{seat}', 'SeatController@orderSeat');
+    Route::get('buyseat/{seatid}', 'SeatController@buySeat');
 
 });
 

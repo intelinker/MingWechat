@@ -9,7 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>选座购票</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -52,7 +52,7 @@
             .title {
                 font-size: 24px;
                 font-weight: 400;
-                margin-top: 80px;
+                margin-top: 50px;
             }
 
             .links > a {
@@ -131,31 +131,31 @@
                 <div>
                     <label class="seat_line">1</label>
 
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat_unavailable.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat_unavailable.png" ></a>
+                    <a class="seat" onclick="event.cancelBubble=true;buyTicket({{$comment->id}})"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" onclick="event.cancelBubble=true;buyTicket({{$comment->id}})"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" onclick="event.cancelBubble=true;buyTicket({{$comment->id}})"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat_unavailable.png" ></a>
+                    <a class="seat" onclick="event.cancelBubble=true;buyTicket({{$comment->id}})"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" onclick="event.cancelBubble=true;buyTicket({{$comment->id}})"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat_unavailable.png" ></a>
                 </div>
 
                 <div>
                     <label class="seat_line">2</label>
 
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat_unavailable.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat_unavailable.png" ></a>
+                    <a class="seat" onclick="event.cancelBubble=true;buyTicket({{$comment->id}})"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat_unavailable.png" ></a>
+                    <a class="seat" onclick="event.cancelBubble=true;buyTicket({{$comment->id}})"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" onclick="event.cancelBubble=true;buyTicket({{$comment->id}})"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" onclick="event.cancelBubble=true;buyTicket({{$comment->id}})"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" onclick="event.cancelBubble=true;buyTicket({{$comment->id}})"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat_unavailable.png" ></a>
                 </div>
 
                 <div>
                     <label class="seat_line">3</label>
 
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat_unavailable.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
-                    <a class="seat" href="https://laravel.com/docs"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat_unavailable.png" ></a>
+                    <a class="seat" onclick="event.cancelBubble=true;buyTicket({{$comment->id}})"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" onclick="event.cancelBubble=true;buyTicket({{$comment->id}})"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat_unavailable.png" ></a>
+                    <a class="seat" onclick="event.cancelBubble=true;buyTicket({{$comment->id}})"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" onclick="event.cancelBubble=true;buyTicket({{$comment->id}})"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat.png" ></a>
+                    <a class="seat" onclick="event.cancelBubble=true;buyTicket({{$comment->id}})"><img class="media-object" width="40" height="40" alt="座位" src="/photos/seat_unavailable.png" ></a>
                 </div>
 
 
@@ -164,7 +164,7 @@
                 {{--</button>--}}
 
                 {{--<div class="links">--}}
-                    {{--<a href="https://laravel.com/docs">Documentation</a>--}}
+                    {{--<a onclick="event.cancelBubble=true;buyTicket({{$comment->id}})">Documentation</a>--}}
                     {{--<a href="https://laracasts.com">Laracasts</a>--}}
                     {{--<a href="https://laravel-news.com">News</a>--}}
                     {{--<a href="https://forge.laravel.com">Forge</a>--}}
@@ -174,3 +174,38 @@
         </div>
     </body>
 </html>
+<script src="{{ url('/src/js/jQuery.min.2.2.4.js') }}" ></script>
+
+<script>
+    function buyTicket($seat) {
+        if (confirm('您要购买茶位' + $seat + '?')) {
+//            alert('谢谢支持!');
+            $assign = "/api/delcomment?commentid=" + $commentid;
+            $.ajax({
+
+                type: 'GET',
+
+                url: $assign,
+
+                data: { commentid : $commentid},
+
+                dataType: "json",
+
+                success: function(data){
+
+//                console.log(data);
+
+                    window.location.reload();
+                },
+
+                error: function(xhr, type){
+//                    alert('Ajax error!')
+                }
+
+            });
+        } else  {
+//            alert('取消删除!');
+        }
+
+    }
+</script>

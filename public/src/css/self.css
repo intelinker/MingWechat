@@ -1,0 +1,149 @@
+/**
+ * Created by raymond on 1/09/16.
+ */
+
+.clearfix {
+    clear: both;
+}
+
+#app-navbar-collapse{
+    float: left;
+}
+
+#page-wrapper {
+    padding: 60px 30px 10px;
+}
+
+.nav > li > a.active {
+    text-decoration: none;
+    background-color: #eee;
+    color: #23527c;
+}
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+    z-index: 2;
+    background-color: #eee;
+    color: #23527c;
+    border-color: #eee;
+}
+
+#heading_block {
+    padding: 14px;
+}
+
+textarea.name {
+    margin-bottom: 5px;
+}
+
+.edit_article {
+    margin-top: 10px;
+}
+
+#app-navbar-collapse .nav > li > a {
+    padding:15px 30px;
+}
+
+#auth_article_list {
+    height: 400px;
+    overflow-y: scroll;
+}
+
+#footer_contents{
+    margin: 0 auto;
+    text-align: center;
+    line-height: 75px;
+    height: 75px;
+}
+
+footer.navbar{
+    margin-bottom: 0;
+}
+
+img.captcha-img {
+    cursor: pointer;
+}
+
+.totalpage {
+    float: left;
+    line-height: 35px;
+    margin-right: 20px;
+}
+
+.top-header {
+    min-height: 85px;
+    background: #f5f5f5;
+}
+
+.bg-success {
+    padding: 10px;
+}
+
+.top-title-block {
+    min-height: 85px;
+    background-color: #f5f5f5;
+}
+
+.formgroup {
+    margin: 10px;
+}
+
+#app_links {
+    float: left;
+    display: block;
+    position: relative;
+    padding: 9px 10px;
+    margin-top: 8px;
+    margin-left: 15px;
+    margin-bottom: 8px;
+
+}
+
+#app_links .apple_app {
+    background: url(../images/iphone_icon_100_hover.png) 5px center no-repeat #eee;
+    background-size: 20px 20px;
+    display: block;
+    height: 32px;
+    width: 100px;
+    padding: 5px 5px 5px 35px;
+    line-height: 20px;
+    border: 1px solid #e74118;
+    border-radius: 5px;
+    float: left;
+    margin-right: 10px;
+}
+
+#app_links .apple_app:hover {
+    background: url(../images/iphone_icon_100.png) 5px center no-repeat #ccc;
+    border: 1px solid #FFF;
+    background-size: 20px 20px;
+    margin-right: 10px;
+    color: #e74118;
+    text-decoration: none;
+}
+#app_links .android_app {
+    background: url('../images/android_icon_100_hover.png') 5px center no-repeat #eee;
+    background-size: 20px 20px;
+    display: block;
+    height: 32px;
+    width: 100px;
+    padding: 5px 5px 5px 35px;
+    line-height: 20px;
+    border: 1px solid #e74118;
+    border-radius: 5px;
+    float: left;
+}
+
+#app_links .android_app:hover {
+    background: url('../images/android_icon_100.png') 5px center no-repeat #ccc;
+    border: 1px solid #FFF;
+    background-size: 20px 20px;
+    color: #e74118;
+    text-decoration: none;
+}
+.text-right {
+    text-align: right;
+}
+
+.help-block strong {
+    color: red;
+}
