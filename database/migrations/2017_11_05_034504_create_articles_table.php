@@ -25,10 +25,10 @@ class CreateArticlesTable extends Migration
             $table->tinyInteger('published')->references('id')->on('article_statuses');
             $table->datetime('publish_date');
             $table->datetime('close_date');
-            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->integer('updated_by')->references('id')->on('users')->onDelete('cascade');
             $table->integer('created_by')->references('id')->on('users')->onDelete('cascade');
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 
