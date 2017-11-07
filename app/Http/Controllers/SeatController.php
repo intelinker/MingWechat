@@ -178,7 +178,7 @@ class SeatController extends Controller
         $product = [
             'trade_type'       => 'JSAPI', // JSAPI，NATIVE，APP...
             'body'             => '舍得茶馆座票:'.$seat->description,
-            'detail'           => '开场时间:'.date('m月d日 H:i',$seat->playtime),
+            'detail'           => '开场时间:'.date('m.d H:i',$seat->playtime),
             'out_trade_no'     => strtotime('now') * 1990 + 2017,
             'total_fee'        => $seat->price,
             'notify_url'       => '/buyseat/'.$seat->id, // 支付结果通知网址，如果不设置则会使用配置里的默认地址，我就没有在这里配，因为在.env内已经配置了。
