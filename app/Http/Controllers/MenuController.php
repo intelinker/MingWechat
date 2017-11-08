@@ -40,40 +40,10 @@ class MenuController extends Controller
             [
                 "type" => "click",
                 "name" => "茶文雅集",
-                "key"  => "CHA_WEN_YA_JI",
-                "sub_button" => [
-                    [
-                        "type" => "view",
-                        "name" => "敬请期待",
-                        "url"  => "http://ming.cure4.net/getseats/1"
-                    ],
-                    [
-                        "type" => "view",
-                        "name" => "敬请期待",
-                        "url"  => "http://ming.cure4.net/getseats/1"
-                    ],
-//                    [
-//                        "type" => "view",
-//                        "name" => "微杂志",
-//                        "url"  => "http://www.soso.com/"
-//                    ],
-//                    [
-//                        "type" => "view",
-//                        "name" => "掌柜说",
-//                        "url"  => "http://v.qq.com/"
-//                    ],
-//                    [
-//                        "type" => "click",
-//                        "name" => "文章搜索",
-//                        "key" => "V1001_GOOD"
-//                    ],
-                ],
-
+                "key"  => "CHA_WEN_YA_JI"
             ],
             [
-                "type" => "click",
                 "name"       => "舍得茶馆",
-                "key"  => "SHE_DE_CHA_GUAN",
                 "sub_button" => [
                     [
                         "type" => "view",
@@ -96,35 +66,97 @@ class MenuController extends Controller
                 "type" => "click",
                 "name"       => "茗品荟萃",
                 "key"  => "MING_PIN_HUI_CUI",
-                "sub_button" => [
-                    [
-                        "type" => "view",
-                        "name" => "敬请期待",
-                        "url"  => "http://ming.cure4.net/getseats/1"
-                    ],
-                    [
-                        "type" => "view",
-                        "name" => "敬请期待",
-                        "url"  => "http://ming.cure4.net/getseats/1"
-                    ],
-//                    [
-//                        "type" => "view",
-//                        "name" => "在线商城",
-//                        "url"  => "http://www.soso.com/"
-//                    ],
-//                    [
-//                        "type" => "view",
-//                        "name" => "本月推荐",
-//                        "url"  => "http://v.qq.com/"
-//                    ],
-//                    [
-//                        "type" => "click",
-//                        "name" => "寻茶记",
-//                        "key" => "V1001_GOOD"
-//                    ],
-                ],
             ],
         ];
+//        $buttons = [
+//            [
+//                "type" => "click",
+//                "name" => "茶文雅集",
+//                "key"  => "CHA_WEN_YA_JI",
+//                "sub_button" => [
+//                    [
+//                        "type" => "view",
+//                        "name" => "敬请期待",
+//                        "url"  => "http://ming.cure4.net/getseats/1"
+//                    ],
+//                    [
+//                        "type" => "view",
+//                        "name" => "敬请期待",
+//                        "url"  => "http://ming.cure4.net/getseats/1"
+//                    ],
+////                    [
+////                        "type" => "view",
+////                        "name" => "微杂志",
+////                        "url"  => "http://www.soso.com/"
+////                    ],
+////                    [
+////                        "type" => "view",
+////                        "name" => "掌柜说",
+////                        "url"  => "http://v.qq.com/"
+////                    ],
+////                    [
+////                        "type" => "click",
+////                        "name" => "文章搜索",
+////                        "key" => "V1001_GOOD"
+////                    ],
+//                ],
+//
+//            ],
+//            [
+//                "type" => "click",
+//                "name"       => "舍得茶馆",
+//                "key"  => "SHE_DE_CHA_GUAN",
+//                "sub_button" => [
+//                    [
+//                        "type" => "view",
+//                        "name" => "节目预告",
+//                        "url"  => "http://ming.cure4.net/getseats/1"
+//                    ],
+//                    [
+//                        "type" => "view",
+//                        "name" => "在线购票",
+//                        "url"  => "http://ming.cure4.net/getseats/1"
+//                    ],
+//                    [
+//                        "type" => "view",
+//                        "name" => "往期集锦",
+//                        "key" => "http://ming.cure4.net/getseats/1"
+//                    ],
+//                ],
+//            ],
+//            [
+//                "type" => "click",
+//                "name"       => "茗品荟萃",
+//                "key"  => "MING_PIN_HUI_CUI",
+//                "sub_button" => [
+//                    [
+//                        "type" => "view",
+//                        "name" => "敬请期待",
+//                        "url"  => "http://ming.cure4.net/getseats/1"
+//                    ],
+//                    [
+//                        "type" => "view",
+//                        "name" => "敬请期待",
+//                        "url"  => "http://ming.cure4.net/getseats/1"
+//                    ],
+////                    [
+////                        "type" => "view",
+////                        "name" => "在线商城",
+////                        "url"  => "http://www.soso.com/"
+////                    ],
+////                    [
+////                        "type" => "view",
+////                        "name" => "本月推荐",
+////                        "url"  => "http://v.qq.com/"
+////                    ],
+////                    [
+////                        "type" => "click",
+////                        "name" => "寻茶记",
+////                        "key" => "V1001_GOOD"
+////                    ],
+//                ],
+//            ],
+//        ];
         $this->menu->add($buttons);
     }
 
