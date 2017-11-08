@@ -43,7 +43,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "节目预告",
-                        "url"  => "http://ming.cure4.net/getseats/1"
+                        "url"  => "http://www.soso.com/"
                     ],
                     [
                         "type" => "view",
@@ -53,7 +53,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "往期集锦",
-                        "key" => "http://ming.cure4.net/getseats/1"
+                        "url"  => "http://v.qq.com/"
                     ],
                 ],
             ],
