@@ -45,7 +45,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "在线商城",
-                        "url"  => ""
+                        "url"  => "http://ming.cure4.net/getseats/1"
                     ],
 //                    [
 //                        "type" => "view",
@@ -95,7 +95,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "敬请期待",
-                        "url"  => ""
+                        "url"  => "http://ming.cure4.net/getseats/1"
                     ],
 //                    [
 //                        "type" => "view",
