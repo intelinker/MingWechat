@@ -38,27 +38,22 @@ class MenuController extends Controller
     {
         $buttons = [
             [
-                "type" => "click",
-                "name" => "今日歌曲",
-                "key"  => "V1001_TODAY_MUSIC"
-            ],
-            [
-                "name"       => "菜单",
+                "name"       => "舍得茶馆",
                 "sub_button" => [
                     [
                         "type" => "view",
-                        "name" => "搜索",
-                        "url"  => "http://www.soso.com/"
+                        "name" => "节目预告",
+                        "url"  => "http://ming.cure4.net/getseats/1"
                     ],
                     [
                         "type" => "view",
-                        "name" => "视频",
-                        "url"  => "http://v.qq.com/"
+                        "name" => "在线购票",
+                        "url"  => "http://ming.cure4.net/getseats/1"
                     ],
                     [
-                        "type" => "click",
-                        "name" => "赞一下我们",
-                        "key" => "V1001_GOOD"
+                        "type" => "view",
+                        "name" => "往期集锦",
+                        "key" => "http://ming.cure4.net/getseats/1"
                     ],
                 ],
             ],
