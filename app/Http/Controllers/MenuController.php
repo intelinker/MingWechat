@@ -41,7 +41,17 @@ class MenuController extends Controller
                 "type" => "click",
                 "name" => "茶文雅集",
                 "key"  => "CHA_WEN_YA_JI",
-//                "sub_button" => [
+                "sub_button" => [
+                    [
+                        "type" => "view",
+                        "name" => "敬请期待",
+                        "url"  => "http://ming.cure4.net/getseats/1"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "敬请期待",
+                        "url"  => "http://ming.cure4.net/getseats/1"
+                    ],
 //                    [
 //                        "type" => "view",
 //                        "name" => "微杂志",
@@ -57,7 +67,7 @@ class MenuController extends Controller
 //                        "name" => "文章搜索",
 //                        "key" => "V1001_GOOD"
 //                    ],
-//                ],
+                ],
 
             ],
             [
@@ -86,7 +96,17 @@ class MenuController extends Controller
                 "type" => "click",
                 "name"       => "茗品荟萃",
                 "key"  => "MING_PIN_HUI_CUI",
-//                "sub_button" => [
+                "sub_button" => [
+                    [
+                        "type" => "view",
+                        "name" => "敬请期待",
+                        "url"  => "http://ming.cure4.net/getseats/1"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "敬请期待",
+                        "url"  => "http://ming.cure4.net/getseats/1"
+                    ],
 //                    [
 //                        "type" => "view",
 //                        "name" => "在线商城",
@@ -102,7 +122,7 @@ class MenuController extends Controller
 //                        "name" => "寻茶记",
 //                        "key" => "V1001_GOOD"
 //                    ],
-//                ],
+                ],
             ],
         ];
         $this->menu->add($buttons);
