@@ -53,12 +53,12 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "在线购票",
-                        "url"  => "http://ming.cure4.net/getseats/1"
+                        "url"  => "http://ming.cure4.net/getseats/2"
                     ],
                     [
                         "type" => "view",
                         "name" => "往期集锦",
-                        "key" => "http://ming.cure4.net/getseats/1"
+                        "key" => "http://ming.cure4.net/getseats/3"
                     ],
                 ],
             ],
