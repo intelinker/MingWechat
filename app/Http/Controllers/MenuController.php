@@ -171,6 +171,6 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->menu->destroy($id);
     }
 }
