@@ -68,17 +68,17 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "节目预告",
-                        "url"  => "http://ming.cure4.net/"
+                        "url"  => "http://ming.cure4.net/getseats/1"
                     ],
                     [
                         "type" => "view",
                         "name" => "在线购票",
-                        "url"  => "http://v.qq.com/"
+                        "url"  => "http://ming.cure4.net/getseats/1"
                     ],
                     [
                         "type" => "view",
                         "name" => "往期集锦",
-                        "key" => "http://www.soso.com/"
+                        "key" => "http://ming.cure4.net/getseats/1"
                     ],
                 ],
             ],
