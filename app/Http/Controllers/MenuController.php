@@ -26,7 +26,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        //
+        return $this->menu->all();
     }
 
     /**
@@ -137,7 +137,7 @@ class MenuController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->menu->current();
     }
 
     /**
@@ -171,6 +171,10 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
+        $id == 0 ? $this->menu->destroy() : $this->menu->destroy($id);
+    }
+
+    public function delMenu($id) {
         $id == 0 ? $this->menu->destroy() : $this->menu->destroy($id);
     }
 }

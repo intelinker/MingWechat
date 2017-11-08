@@ -24,6 +24,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('getseats/{theatre}', 'SeatController@getSeatsForTheartre');
     Route::get('orderseat/{seat}', 'SeatController@orderSeat');
     Route::get('buyseat/{seatid}', 'SeatController@buySeat');
+    Route::get('delmenu/{menuid}', 'MenuController@delMenu');
 
 });
 
