@@ -14,7 +14,7 @@
 
 Route::any('/wechat', 'WechatController@serve');
 
-Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
+Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'ArticleController@index');
     Route::resource('users', 'WechatController');
     Route::get('remarkuser/{openid}/{mark}', 'WechatController@remarkUser');
@@ -22,15 +22,11 @@ Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
     Route::resource('seats', 'SeatController');
     Route::resource('articles', 'ArticleController');
     Route::get('getseats/{theatre}', 'SeatController@getSeatsForTheartre');
-    Route::get('orderseat/{seat}', 'SeatController@orderSeat');
-    Route::get('buyseat/{seatid}', 'SeatController@buySeat');
+
     Route::get('delmenu/{menuid}', 'MenuController@delMenu');
 });
 
 Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
-    Route::get('/user', function () {
-        $user = session('wechat.oauth_user'); // 拿到授权用户资料
-
-        dd($user);
-    });
+    Route::get('orderseat/{seat}', 'SeatController@orderSeat');
+    Route::get('buyseat/{seatid}', 'SeatController@buySeat');
 });

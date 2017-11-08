@@ -174,7 +174,7 @@ class SeatController extends Controller
     public function orderSeat($seatid) {
         $seat = Seat::findOrFail($seatid);
         $user = session('wechat.oauth_user'); // 拿到授权用户资料
-        //        dd($seat->price);
+//                dd($user->getId());
 
         $product = [
             'trade_type'       => 'JSAPI', // JSAPI，NATIVE，APP...
@@ -182,7 +182,7 @@ class SeatController extends Controller
             'detail'           => '开场时间:'.$seat->playtime,
             'out_trade_no'     => strtotime('now') * 1990 + 2017,
             'total_fee'        => intval(round(floatval($seat->price) * 100)),
-            'openid'           => $user->openId,
+            'openid'           => $user->getId(),
             'notify_url'       => '/buyseat/'.$seat->id, // 支付结果通知网址，如果不设置则会使用配置里的默认地址，我就没有在这里配，因为在.env内已经配置了。
             // ...
         ];
