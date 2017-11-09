@@ -191,7 +191,7 @@ class SeatController extends Controller
         ];
         $app = new Application($options);
 //        $payment = $app->payment;
-        
+
 //        $app = new Application(config('wechat'));
         $js = $app->js;
 
