@@ -30,9 +30,9 @@
 </script>
 <script>
     $(document).ready(function() {
-        callpay();
+        callpay('{{$json}}');
 
-        
+
         {{--if (typeof WeixinJSBridge == "undefined"){--}}
             {{--if (document.addEventListener) {--}}
                 {{--document.addEventListener('WeixinJSBridgeReady', wxReadyFunc, false);--}}
@@ -192,22 +192,25 @@
     {{--};--}}
     {{--});--}}
 
-    function callpay()
+    function callpay($config)
     {
         document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-            WeixinJSBridge.invoke('getBrandWCPayRequest',str,function(res){
+            WeixinJSBridge.invoke('getBrandWCPayRequest', $config,function(res){
 
                 WeixinJSBridge.log(res.err_msg);
                 //alert(res.err_code+res.err_desc+res.err_msg);
                 switch (res.err_msg){
                     case 'get_brand_wcpay_request:cancel':
-                        location.href="/?_a=fail&order_sn=<?php echo $order_sn;?>";
+                        alert('用户取消支付！');
                         break;
                     case 'get_brand_wcpay_request:fail':
-                        location.href="/?_a=fail&order_sn=<?php echo $order_sn;?>";
+                        alert('支付失败！（'+res.err_desc+'）');
                         break;
                     case 'get_brand_wcpay_request:ok':
-                        location.href="/?_a=done&order_sn=<?php echo $order_sn;?>&ac=<?php echo $authcode?>";
+                        alert('支付成功！');
+                        break;
+                    default:
+                        alert(JSON.stringify($config));
                         break;
                 }
             });
