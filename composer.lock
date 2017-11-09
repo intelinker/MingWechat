@@ -825,16 +825,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.5.19",
+            "version": "v5.5.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "c678100e84934ec85c9f8bc26bd0a60222682719"
+                "reference": "ce0019d22a83b1b240330ea4115ae27a4d75d79c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/laravel/framework/c678100e84934ec85c9f8bc26bd0a60222682719.zip",
-                "reference": "c678100e84934ec85c9f8bc26bd0a60222682719",
+                "url": "https://files.phpcomposer.com/files/laravel/framework/ce0019d22a83b1b240330ea4115ae27a4d75d79c.zip",
+                "reference": "ce0019d22a83b1b240330ea4115ae27a4d75d79c",
                 "shasum": ""
             },
             "require": {
@@ -916,7 +916,7 @@
                 "nexmo/client": "Required to use the Nexmo transport (~1.0).",
                 "pda/pheanstalk": "Required to use the beanstalk queue driver (~3.0).",
                 "predis/predis": "Required to use the redis cache and queue drivers (~1.0).",
-                "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (~2.0).",
+                "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (~3.0).",
                 "symfony/css-selector": "Required to use some of the crawler integration testing tools (~3.3).",
                 "symfony/dom-crawler": "Required to use most of the crawler integration testing tools (~3.3).",
                 "symfony/psr-http-message-bridge": "Required to psr7 bridging features (~1.0)."
@@ -952,7 +952,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-10-25T19:10:45+00:00"
+            "time": "2017-11-07T14:24:50+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -3191,16 +3191,16 @@
         },
         {
             "name": "tinymce/tinymce",
-            "version": "4.7.1",
+            "version": "4.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tinymce/tinymce-dist.git",
-                "reference": "4fd91026d3765fee9b148b5e684b014a8e18ead1"
+                "reference": "2639396a6d5eb8db7457ed4f6de6f5d15303ef52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/tinymce/tinymce-dist/4fd91026d3765fee9b148b5e684b014a8e18ead1.zip",
-                "reference": "4fd91026d3765fee9b148b5e684b014a8e18ead1",
+                "url": "https://files.phpcomposer.com/files/tinymce/tinymce-dist/2639396a6d5eb8db7457ed4f6de6f5d15303ef52.zip",
+                "reference": "2639396a6d5eb8db7457ed4f6de6f5d15303ef52",
                 "shasum": ""
             },
             "type": "component",
@@ -3233,7 +3233,7 @@
                 "tinymce",
                 "wysiwyg"
             ],
-            "time": "2017-10-09T13:17:31+00:00"
+            "time": "2017-11-07T12:44:31+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

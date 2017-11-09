@@ -22,6 +22,7 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ asset("/src/assets/stylesheets/mbox.css") }}" /><!--背景样式 弹框样式-->
 
     <!-- Styles -->
     <style>
@@ -267,7 +268,11 @@
 </div>
 
 <script src="{{ url('/src/js/jQuery.min.2.2.4.js') }}" ></script>
+<script src="{{ url('/src/js/jQuery.min.2.2.4.js') }}" ></script>
+<script src="{{ url('/src/js/jQuery.min.2.2.4.js') }}" ></script>
 
+<script type="text/javascript" src="/src/js/jquery-1.10.2.min.js" ></script><!--jquery库-->
+<script type="text/javascript" src="/src/js/jm-qi.js" ></script><!--自定义弹框大小，提示信息，样式，icon。。。。-->
 <script>
 
     jQuery(document).ready(function() {
@@ -325,37 +330,54 @@
 ////                checkimg.src = "/photos/seat.png";
 //
 
-            if (confirm('您要购买茶位' + $seat['description'] + '?')) {
-                location.assign("/orderseat/" + $seat['id']);
+            $.mbox({
+                area: [ "300px", "auto" ], //弹框大小
+                border: [ 0, .5, "#666" ],
+                dialog: {
+                    msg: '您要购买茶位' + $seat['description'],
+                    btns: 2,   //1: 只有一个按钮   2：两个按钮  3：没有按钮 提示框
+                    type: 2,   //1:对钩   2：问号  3：叹号
+                    btn: [ "购买", "再看看"],  //自定义按钮
+                    yes: function() {  //点击左侧按钮：成功
+                        location.assign("/orderseat/" + $seat['id']);
+                    },
+                    no: function() { //点击右侧按钮：失败
+                        return false;
+                    }
+                }
+            });
 
-//                alert('谢谢支持!');
-//            $assign = "/api/delcomment?commentid=";
-//            $.ajax({
+//            if (confirm('您要购买茶位' + $seat['description'] + '?')) {
+//                location.assign("/orderseat/" + $seat['id']);
 //
-//                type: 'GET',
+////                alert('谢谢支持!');
+////            $assign = "/api/delcomment?commentid=";
+////            $.ajax({
+////
+////                type: 'GET',
+////
+////                url: $assign,
+////
+////                data: { commentid : $commentid},
+////
+////                dataType: "json",
+////
+////                success: function(data){
+////
+//////                console.log(data);
+////
+////                    window.location.reload();
+////                },
+////
+////                error: function(xhr, type){
+//////                    alert('Ajax error!')
+////                }
+////
+////            });
+//            } else  {
+////                alert('取消删除!');
+//            }
 //
-//                url: $assign,
-//
-//                data: { commentid : $commentid},
-//
-//                dataType: "json",
-//
-//                success: function(data){
-//
-////                console.log(data);
-//
-//                    window.location.reload();
-//                },
-//
-//                error: function(xhr, type){
-////                    alert('Ajax error!')
-//                }
-//
-//            });
-            } else  {
-//                alert('取消删除!');
-            }
-
 
         }
 

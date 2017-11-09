@@ -21,6 +21,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::resource('menu', 'MenuController');
     Route::resource('seats', 'SeatController');
     Route::resource('articles', 'ArticleController');
+    Route::resource('orders', 'OrderController');
     Route::get('getseats/{theatre}', 'SeatController@getSeatsForTheartre');
 
     Route::get('delmenu/{menuid}', 'MenuController@delMenu');

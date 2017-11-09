@@ -73,11 +73,11 @@ return [
      * scopes：公众平台（snsapi_userinfo / snsapi_base），开放平台：snsapi_login
      * callback：OAuth授权完成后的回调页地址(如果使用中间件，则随便填写。。。)
      */
-    // 'oauth' => [
-    //     'only_wechat_browser' => false,
-    //     'scopes'   => array_map('trim', explode(',', env('WECHAT_OAUTH_SCOPES', 'snsapi_userinfo'))),
-    //     'callback' => env('WECHAT_OAUTH_CALLBACK', '/examples/oauth_callback.php'),
-    // ],
+     'oauth' => [
+         'only_wechat_browser' => false,
+         'scopes'   => array_map('trim', explode(',', env('WECHAT_OAUTH_SCOPES', 'snsapi_userinfo'))),
+         'callback' => env('WECHAT_OAUTH_CALLBACK', '/examples/oauth_callback.php'),
+     ],
 
     /*
      * 微信支付
@@ -98,7 +98,7 @@ return [
      *
      * 当 enable_mock 为 true 则会启用模拟微信授权，用于开发时使用，开发完成请删除或者改为 false 即可
      */
-    'enable_mock' => env('WECHAT_ENABLE_MOCK', true),
+    'enable_mock' => env('WECHAT_ENABLE_MOCK', false),
     'mock_user' => [
         'openid' => 'odh7zsgI75iT8FRh0fGlSojc9PWM',
         // 以下字段为 scope 为 snsapi_userinfo 时需要

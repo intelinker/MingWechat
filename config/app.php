@@ -164,7 +164,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Overtrue\LaravelWeChat\ServiceProvider::class,
+//        Overtrue\LaravelWeChat\ServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
