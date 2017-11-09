@@ -141,7 +141,7 @@
         shade: [.3, "#000"],
         fix: !0,
         move: ".jm-box-title",
-        title: "信息",
+        title: "提示",
         offset: ["", "50%"],
         area: ["310px", "auto"],
         closeBtn: [0, !0],

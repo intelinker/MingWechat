@@ -29,6 +29,7 @@
 {{--</script>--}}
 <script>
     $(document).ready(function() {
+
         WeixinJSBridge.invoke(
             'getBrandWCPayRequest', "{{$json}}",
             function(res){
