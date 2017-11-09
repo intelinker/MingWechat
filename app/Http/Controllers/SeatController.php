@@ -219,6 +219,14 @@ class SeatController extends Controller
             $prepayId = $result->prepay_id; // 这个很重要。有了这个才能调用支付。
 //            dd('prepay id:'.$prepayId);
             $config = $payment->configForJSSDKPayment($prepayId); // 这个方法是取得js里支付所必须的参数用的。 没这个啥也做不了，除非你自己把js的参数生成一遍
+            $config = [
+                "appId" => $config['appId'],
+                "nonceStr"=>$config['nonceStr'],
+                "package"=> $config['package'],
+                 "paySign"=> $config['paySign'],
+                 "signType"=> $config['signType'],
+                 "timeStamp"=> $config['timeStamp']
+            ];
             $json = $payment->configForPayment($prepayId); // 返回 json 字符串，如果想返回数组，传第二个参数 false
             return view('theatre/pay',['js'=>$js,'config'=>$config, 'json'=>$json]);
         } else {
