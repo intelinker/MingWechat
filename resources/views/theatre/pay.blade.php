@@ -29,7 +29,7 @@
 </script>
 <script>
     $(document).ready(function() {
-        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+//        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
             if( typeof WeixinJSBridge === 'undefined' ) {
                 alert('请在微信在打开页面！');
                 return false;
@@ -53,7 +53,7 @@
                         break;
                 }
             });
-        }, false);
+//        }, false);
 
 //        if( typeof WeixinJSBridge === 'undefined' ) {
 //            alert('请在微信在打开页面！');
