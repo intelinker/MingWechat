@@ -175,15 +175,15 @@ class SeatController extends Controller
         $seat = Seat::findOrFail($seatid);
         $user = session('wechat.oauth_user'); // 拿到授权用户资料
 //                dd($user->getId());
-
+        $tradeNo = strtotime('now') * 1990 + 2017;
         $product = [
             'trade_type'       => 'JSAPI', // JSAPI，NATIVE，APP...
             'body'             => '舍得茶馆座票:'.$seat->description,
             'detail'           => '开场时间:'.$seat->playtime,
-            'out_trade_no'     => strtotime('now') * 1990 + 2017,
+            'out_trade_no'     => $tradeNo,
             'total_fee'        => intval(round(floatval($seat->price) * 100)),
             'openid'           => $user->getId(),
-            'notify_url'       => '/buyseat/'.$seat->id, // 支付结果通知网址，如果不设置则会使用配置里的默认地址，我就没有在这里配，因为在.env内已经配置了。
+            'notify_url'       => 'https://pay.weixin.qq.com/wxpay/pay.action', // 支付结果通知网址，如果不设置则会使用配置里的默认地址，我就没有在这里配，因为在.env内已经配置了。
             // ...
         ];
 //        创建订单
@@ -194,6 +194,8 @@ class SeatController extends Controller
         $prepayId = null;
         if ($result->return_code == 'SUCCESS' && $result->result_code == 'SUCCESS'){
             $prepayId = $result->prepay_id; // 这个很重要。有了这个才能调用支付。
+            $json = $payment->configForPayment($prepayId); // 返回 json 字符串，如果想返回数组，传第二个参数 false
+            return view('theatre/confirm_pay',['order'=>$tradeNo,'json'=>$json]);
         } else {
             var_dump($result);
             die("出错了。");  // 出错就说出来，不然还能怎样？
