@@ -29,13 +29,16 @@
 {{--</script>--}}
 <script>
     $(document).ready(function() {
-        if( typeof WeixinJSBridge === 'undefined' ) {
-            alert('请在微信在打开页面！');
-            return false;
-        }
-        WeixinJSBridge.invoke(
-            'getBrandWCPayRequest', $json, function(res) {
-                switch(res.err_msg) {
+        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+            if( typeof WeixinJSBridge === 'undefined' ) {
+                alert('请在微信在打开页面！');
+                return false;
+            }
+            WeixinJSBridge.invoke('getBrandWCPayRequest',str,function(res){
+
+                WeixinJSBridge.log(res.err_msg);
+                //alert(res.err_code+res.err_desc+res.err_msg);
+                switch (res.err_msg){
                     case 'get_brand_wcpay_request:cancel':
                         alert('用户取消支付！');
                         break;
@@ -49,8 +52,33 @@
                         alert(JSON.stringify(res));
                         break;
                 }
-            }
-        );
+            });
+        }, false);
+
+//        if( typeof WeixinJSBridge === 'undefined' ) {
+//            alert('请在微信在打开页面！');
+//            return false;
+//        }
+//        WeixinJSBridge.invoke(
+//            'getBrandWCPayRequest', $json, function(res) {
+//                switch(res.err_msg) {
+//                    case 'get_brand_wcpay_request:cancel':
+//                        alert('用户取消支付！');
+//                        break;
+//                    case 'get_brand_wcpay_request:fail':
+//                        alert('支付失败！（'+res.err_desc+'）');
+//                        break;
+//                    case 'get_brand_wcpay_request:ok':
+//                        alert('支付成功！');
+//                        break;
+//                    default:
+//                        alert(JSON.stringify(res));
+//                        break;
+//                }
+//            }
+//        );
+
+
         {{--WeixinJSBridge.invoke(--}}
             {{--'getBrandWCPayRequest', "{{$json}}",--}}
             {{--function(res){--}}
