@@ -198,8 +198,8 @@ class SeatController extends Controller
         if ($result->return_code == 'SUCCESS' && $result->result_code == 'SUCCESS'){
             $prepayId = $result->prepay_id; // 这个很重要。有了这个才能调用支付。
             $config = $payment->configForJSSDKPayment($prepayId); // 这个方法是取得js里支付所必须的参数用的。 没这个啥也做不了，除非你自己把js的参数生成一遍
-//            $json = $payment->configForPayment($prepayId); // 返回 json 字符串，如果想返回数组，传第二个参数 false
-            return view('theatre/confirm_pay',['js'=>$js,'config'=>$config]);
+            $json = $payment->configForPayment($prepayId); // 返回 json 字符串，如果想返回数组，传第二个参数 false
+            return view('theatre/confirm_pay',['js'=>$js,'config'=>$config, 'json'=>$json]);
         } else {
             var_dump($result);
             die("出错了。");  // 出错就说出来，不然还能怎样？
