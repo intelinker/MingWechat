@@ -84,7 +84,7 @@ return [
      */
      'payment' => [
          'merchant_id'        => env('WECHAT_PAYMENT_MERCHANT_ID', ''),
-         'key'                => env('WECHAT_PAYMENT_KEY', 'key-for-signature'),
+         'key'                => env('WECHAT_PAYMENT_KEY', ''),
          'cert_path'          => env('WECHAT_PAYMENT_CERT_PATH', 'path/to/your/cert.pem'), // XXX: 绝对路径！！！！
          'key_path'           => env('WECHAT_PAYMENT_KEY_PATH', 'path/to/your/key'),      // XXX: 绝对路径！！！！
          // 'device_info'     => env('WECHAT_PAYMENT_DEVICE_INFO', ''),
