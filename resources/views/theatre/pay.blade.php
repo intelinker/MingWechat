@@ -23,26 +23,50 @@
 
 <script src="{{ url('/src/js/jQuery.min.2.2.4.js') }}" ></script>
 
-<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript" charset="utf-8"></script>
 {{--<script type="text/javascript" charset="utf-8">--}}
     {{--wx.config({{ $js->config(array('chooseWXPay')) }});--}}
 {{--</script>--}}
 <script>
     $(document).ready(function() {
-
+        if( typeof WeixinJSBridge === 'undefined' ) {
+            alert('请在微信在打开页面！');
+            return false;
+        }
         WeixinJSBridge.invoke(
-            'getBrandWCPayRequest', "{{$json}}",
-            function(res){
-                if(res.err_msg == "get_brand_wcpay_request：ok" ) {
-                    alert('支付成功。');
-// 使用以上方式判断前端返回,微信团队郑重提示：
-// res.err_msg将在用户支付成功后返回
-// ok，但并不保证它绝对可靠。
+            'getBrandWCPayRequest', $json, function(res) {
+                switch(res.err_msg) {
+                    case 'get_brand_wcpay_request:cancel':
+                        alert('用户取消支付！');
+                        break;
+                    case 'get_brand_wcpay_request:fail':
+                        alert('支付失败！（'+res.err_desc+'）');
+                        break;
+                    case 'get_brand_wcpay_request:ok':
+                        alert('支付成功！');
+                        break;
+                    default:
+                        alert(JSON.stringify(res));
+                        break;
                 }
             }
         );
-        alert("支付失败，请返回重试。");
-        return false;
+        {{--WeixinJSBridge.invoke(--}}
+            {{--'getBrandWCPayRequest', "{{$json}}",--}}
+            {{--function(res){--}}
+                {{--if(res.err_msg == "get_brand_wcpay_request：ok" ) {--}}
+                    {{--alert('支付成功。');--}}
+{{--// 使用以上方式判断前端返回,微信团队郑重提示：--}}
+{{--// res.err_msg将在用户支付成功后返回--}}
+{{--// ok，但并不保证它绝对可靠。--}}
+                {{--}--}}
+            {{--}--}}
+        {{--);--}}
+        {{--alert("支付失败，请返回重试。");--}}
+        {{--return false;--}}
+
+
+
         {{--wx.chooseWXPay({--}}
             {{--timestamp: "{{$config['timestamp']}}", // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符--}}
             {{--nonceStr: '{{$config['nonceStr']}}', // 支付签名随机串，不长于 32 位--}}
