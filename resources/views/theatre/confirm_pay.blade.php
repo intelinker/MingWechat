@@ -21,13 +21,15 @@
 
 
 
+<script src="{{ url('/src/js/jQuery.min.2.2.4.js') }}" ></script>
 
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" charset="utf-8">
-    wx.config({{ $js->config(array('chooseWXPay')) }});
+    {{--wx.config({{ $js->config(array('chooseWXPay')) }});--}}
 </script>
 <script>
-    jQuery(document).ready(function() {
+    $(document).ready(function() {
+//        alert('pay');
         wx.chooseWXPay({
             timestamp: "{{$config['timestamp']}}", // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
             nonceStr: '{{$config['nonceStr']}}', // 支付签名随机串，不长于 32 位

@@ -172,6 +172,10 @@ class SeatController extends Controller
 
 
     public function orderSeat($seatid) {
+        $app = new Application(config('wechat'));
+        $js = $app->js;
+
+//        return view('theatre/confirm_pay',['js'=>$js]);
         $seat = Seat::findOrFail($seatid);
         $user = session('wechat.oauth_user'); // 拿到授权用户资料
 //                dd($user->getId());
@@ -188,14 +192,12 @@ class SeatController extends Controller
         ];
 //        创建订单
         $order = new Order($product);
-        $app = new Application(config('wechat'));
         $payment = $app->payment;
         $result = $payment->prepare($order); // 这里的order是上面一步得来的。 这个prepare()帮你计算了校验码，帮你获取了prepareId.省心。
         $prepayId = null;
         if ($result->return_code == 'SUCCESS' && $result->result_code == 'SUCCESS'){
             $prepayId = $result->prepay_id; // 这个很重要。有了这个才能调用支付。
             $config = $payment->configForJSSDKPayment($prepayId); // 这个方法是取得js里支付所必须的参数用的。 没这个啥也做不了，除非你自己把js的参数生成一遍
-            $js = $app->js;
 //            $json = $payment->configForPayment($prepayId); // 返回 json 字符串，如果想返回数组，传第二个参数 false
             return view('theatre/confirm_pay',['js'=>$js,'config'=>$config]);
         } else {

@@ -268,8 +268,6 @@
 </div>
 
 <script src="{{ url('/src/js/jQuery.min.2.2.4.js') }}" ></script>
-<script src="{{ url('/src/js/jQuery.min.2.2.4.js') }}" ></script>
-<script src="{{ url('/src/js/jQuery.min.2.2.4.js') }}" ></script>
 
 <script type="text/javascript" src="/src/js/jquery-1.10.2.min.js" ></script><!--jquery库-->
 <script type="text/javascript" src="/src/js/jm-qi.js" ></script><!--自定义弹框大小，提示信息，样式，icon。。。。-->
