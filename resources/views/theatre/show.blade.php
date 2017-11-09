@@ -344,7 +344,7 @@
                         use EasyWeChat\Foundation\Application;
                         use EasyWeChat\Payment\Order;
 
-                        $seat = e($seat);
+//                        $seat = e($seat);
 //                        $seat = Seat::findOrFail($seatid);
                         $user = session('wechat.oauth_user'); // 拿到授权用户资料
                         //                dd($user->getId());
