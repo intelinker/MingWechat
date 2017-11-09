@@ -167,10 +167,7 @@ class SeatController extends Controller
 //            }
 //            array_push($seatsLines, $seatsRows);
 //        }
-        $app = new Application(config('wechat'));
-
-        $js = $app->js;
-        return view('theatre/show', ['seats'=>$seats, 'js'=>$js]);
+        return view('theatre/show', ['seats'=>$seats]);
     }
 
 

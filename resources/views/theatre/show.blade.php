@@ -268,7 +268,9 @@
 </div>
 
 <script src="{{ url('/src/js/jQuery.min.2.2.4.js') }}" ></script>
-<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ url('/src/js/jQuery.min.2.2.4.js') }}" ></script>
+<script src="{{ url('/src/js/jQuery.min.2.2.4.js') }}" ></script>
+
 <script type="text/javascript" src="/src/js/jquery-1.10.2.min.js" ></script><!--jquery库-->
 <script type="text/javascript" src="/src/js/jm-qi.js" ></script><!--自定义弹框大小，提示信息，样式，icon。。。。-->
 <script>
@@ -319,14 +321,14 @@
 
 
         if ($seat['available'] == 1) {
-            var id = $seat['line'] + "_" + $seat['row'] ;
+//            var id = $seat['line'] + "_" + $seat['row'];
 //            var checkimg = document.getElementById(id);
 //            $('#' + id).src("/photos/seat_checked.png");
 ////            if (checkimg.src == "/photos/seat.png")
 ////                checkimg.src = "/photos/seat_checked.png";
 ////            else
 ////                checkimg.src = "/photos/seat.png";
-            wx.config({{ $js->config(array('chooseWXPay')) }});
+//
 
             $.mbox({
                 area: [ "300px", "auto" ], //弹框大小
@@ -337,66 +339,7 @@
                     type: 2,   //1:对钩   2：问号  3：叹号
                     btn: [ "购买", "再看看"],  //自定义按钮
                     yes: function() {  //点击左侧按钮：成功
-//                        location.assign("/orderseat/" + $seat['id']);
-
-                        <?php
-                        use App\Seat;
-                        use EasyWeChat\Foundation\Application;
-                        use EasyWeChat\Payment\Order;
-
-//                        $seat = e($seat);
-//                        $seat = Seat::findOrFail($seatid);
-                        $user = session('wechat.oauth_user'); // 拿到授权用户资料
-                        //                dd($user->getId());
-                        $tradeNo = strtotime('now') * 1990 + 2017;
-                        $product = [
-                            'trade_type'       => 'JSAPI', // JSAPI，NATIVE，APP...
-                            'body'             => '舍得茶馆座票:'.$seat->description,
-                            'detail'           => '开场时间:'.$seat->playtime,
-                            'out_trade_no'     => $tradeNo,
-                            'total_fee'        => intval(round(floatval($seat->price) * 100)),
-                            'openid'           => $user->getId(),
-                            'notify_url'       => 'https://pay.weixin.qq.com/wxpay/pay.action', // 支付结果通知网址，如果不设置则会使用配置里的默认地址，我就没有在这里配，因为在.env内已经配置了。
-                            // ...
-                        ];
-                        //        创建订单
-                        $order = new Order($product);
-                        $app = new Application(config('wechat'));
-                        $payment = $app->payment;
-                        $result = $payment->prepare($order); // 这里的order是上面一步得来的。 这个prepare()帮你计算了校验码，帮你获取了prepareId.省心。
-                        $prepayId = null;
-                        if ($result->return_code == 'SUCCESS' && $result->result_code == 'SUCCESS'){
-                            $prepayId = $result->prepay_id; // 这个很重要。有了这个才能调用支付。
-                            $config = $payment->configForJSSDKPayment($prepayId); // 这个方法是取得js里支付所必须的参数用的。 没这个啥也做不了，除非你自己把js的参数生成一遍
-                            $js = $app->js;
-//            $json = $payment->configForPayment($prepayId); // 返回 json 字符串，如果想返回数组，传第二个参数 false
-                        } else {
-                            var_dump($result);
-                            die("出错了。");  // 出错就说出来，不然还能怎样？
-                        }
-                        ?>
-
-                        wx.chooseWXPay({
-                            timestamp: "{{$config['timestamp']}}", // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
-                            nonceStr: '{{$config['nonceStr']}}', // 支付签名随机串，不长于 32 位
-                            package: '{{$config['package']}}', // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
-                            signType: '{{$config['signType']}}', // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
-                            paySign: '{{$config['paySign']}}', // 支付签名
-                            success: function (res) {
-                                // 支付成功后的回调函数
-                                if(res.err_msg == "get_brand_wcpay_request：ok" ) {
-                                    alert('支付成功。');
-                                    window.location.href="{{url("wechat/pay_ok")}}";
-                                }else{
-                                    //alert(res.errMsg);
-                                    alert("支付失败，请返回重试。");
-                                }
-                            },
-                            fail: function (res) {
-                                alert("支付失败，请返回重试。");
-                            }
-                        });
-
+                        location.assign("/orderseat/" + $seat['id']);
                     },
                     no: function() { //点击右侧按钮：失败
                         return false;
