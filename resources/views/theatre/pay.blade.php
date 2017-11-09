@@ -194,8 +194,18 @@
 
     function callpay($config)
     {
+
         document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-            WeixinJSBridge.invoke('getBrandWCPayRequest', $config,function(res){
+            WeixinJSBridge.invoke('getBrandWCPayRequest',
+                {
+                    "appId":$config['appId'],     //公众号名称，由商户传入
+                    "timeStamp":$config['timestamp'],         //时间戳，自1970年以来的秒数
+                    "nonceStr":$config['nonceStr'], //随机串
+                    "package":$config['package'],
+                    "signType":$config['signType'],         //微信签名方式：
+                    "paySign":$config['paySign'] //微信签名
+                }
+                ,function(res){
 
                 WeixinJSBridge.log(res.err_msg);
                 //alert(res.err_code+res.err_desc+res.err_msg);
@@ -210,7 +220,7 @@
                         alert('支付成功！');
                         break;
                     default:
-                        alert(JSON.stringify($config));
+                        alert('ok');
                         break;
                 }
             });
