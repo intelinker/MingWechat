@@ -225,7 +225,7 @@ class SeatController extends Controller
                 "package"=> $config['package'],
                  "paySign"=> $config['paySign'],
                  "signType"=> $config['signType'],
-                 "timeStamp"=> $config['timeStamp']
+                 "timestamp"=> $config['timestamp']
             ];
             $json = $payment->configForPayment($prepayId); // 返回 json 字符串，如果想返回数组，传第二个参数 false
             return view('theatre/pay',['js'=>$js,'config'=>$config, 'json'=>$json]);
