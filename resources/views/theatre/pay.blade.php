@@ -16,7 +16,8 @@
 <hr>
 
 <div>
-    <input name="button" id="btnPay" type="button" value="支付"  onclick="pay($json)"/>
+    {{--<input name="button" id="btnPay" type="button" value="支付"  onclick="pay($json)"/>--}}
+    <a class="btn btn-lg btn-primary" onclick="pay($json)" role="button">支付</a>
 </div>
 
 
@@ -117,7 +118,7 @@
         {{--});--}}
     });
     function pay($config) {
-//        alert("pay");
+        alert("pay");
         if( typeof WeixinJSBridge === 'undefined' ) {
             alert('请在微信打开页面！');
             return false;
