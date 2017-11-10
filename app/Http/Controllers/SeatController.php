@@ -226,8 +226,8 @@ class SeatController extends Controller
 //                 "signType"=> $config['signType'],
 //                 "timestamp"=> $config['timestamp']
 //            ];
-            $json = $payment->configForPayment($prepayId); // 返回 json 字符串，如果想返回数组，传第二个参数 false
-            return view('theatre/pay',['js'=>$js,'config'=>$config, 'json'=>$json, "appId" => $config['appId'], "timestamp"=> $config['timestamp'], 'package'=>$config['package'], 'paySign'=>$config['paySign'], "nonceStr"=>$config['nonceStr'], "signType"=> $config['signType']]);
+            $json = $payment->configForPayment($prepayId, false); // 返回 json 字符串，如果想返回数组，传第二个参数 false
+            return view('theatre/pay',['js'=>$js,'config'=>$config, 'json'=>$json, "appId" => $config['appId'], "timestamp"=> $config['timestamp'], 'package'=>$config['package'], 'paySign'=>$json['paySign'], "nonceStr"=>$config['nonceStr'], "signType"=> $config['signType']]);
         } else {
             var_dump($result);
             die("出错了。");  // 出错就说出来，不然还能怎样？
