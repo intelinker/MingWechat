@@ -240,7 +240,7 @@
         document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
             WeixinJSBridge.invoke('getBrandWCPayRequest',
                 JSON.parse(JSON.stringify({
-                    "appId": '{{$nonceStr}}', //'wxd2ff9ea209f500d0',//$config['appId'],     //公众号名称，由商户传入
+                    "appId": 'wxd2ff9ea209f500d0',//$config['appId'],     //公众号名称，由商户传入//'{{$nonceStr}}', //
                     "timeStamp":'{{$nonceStr}}', //$config['timestamp'],         //时间戳，自1970年以来的秒数
                     "nonceStr":'{{$nonceStr}}', //$config['nonceStr'], //随机串
                     "package":'{{$package}}', //$config['package'],
