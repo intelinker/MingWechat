@@ -30,7 +30,7 @@
 </script>
 <script>
     $(document).ready(function() {
-        callpay('{{$json}}');
+        callpay('{{$config}}');
 
         {{--if (typeof WeixinJSBridge == "undefined"){--}}
             {{--if (document.addEventListener) {--}}
@@ -246,7 +246,7 @@
         {{--};--}}
 
         document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-            WeixinJSBridge.invoke('getBrandWCPayRequest', '{!! $json !!}'
+            WeixinJSBridge.invoke('getBrandWCPayRequest', $config
                 {{--JSON.parse(JSON.stringify({--}}
                     {{--"appId": 'wxd2ff9ea209f500d0',//$config['appId'],     //公众号名称，由商户传入 , //--}}
                     {{--"timeStamp":'{{$nonceStr}}', //$config['timestamp'],         //时间戳，自1970年以来的秒数--}}
