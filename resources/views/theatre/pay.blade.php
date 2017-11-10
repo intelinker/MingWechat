@@ -238,7 +238,7 @@
     {
 
         document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-            WeixinJSBridge.invoke('getBrandWCPayRequest', $config
+            WeixinJSBridge.invoke('getBrandWCPayRequest', 
                 JSON.parse(JSON.stringify({
                     "appId":$config['appId'],     //公众号名称，由商户传入
                     "timeStamp":$config['timestamp'],         //时间戳，自1970年以来的秒数
