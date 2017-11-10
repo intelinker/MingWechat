@@ -172,27 +172,26 @@ class SeatController extends Controller
 
 
     public function orderSeat($seatid) {
-        $options = [
-            // 前面的appid什么的也得保留哦
-            'app_id' => 'wxd2ff9ea209f500d0',
-            // ...
-            // payment
-            'payment' => [
-                'merchant_id'        => '1491687852',
-                'key'                => 'LO9ki8MJU7nhy6BGT5vfr4CDE3xsw2ZA',
-                'cert_path'          => '/cert/apiclient_cert.pem', // XXX: 绝对路径！！！！
-                'key_path'           => '/cert/apiclient_key.pem',      // XXX: 绝对路径！！！！
-                'notify_url'         => 'https://pay.weixin.qq.com/wxpay/pay.action',       // 你也可以在下单时单独设置来想覆盖它
-                // 'device_info'     => '013467007045764',
-                // 'sub_app_id'      => '',
-                // 'sub_merchant_id' => '',
-                // ...
-            ],
-        ];
-        $app = new Application($options);
-//        $payment = $app->payment;
+//        $options = [
+//            // 前面的appid什么的也得保留哦
+//            'app_id' => 'wxd2ff9ea209f500d0',
+//            // ...
+//            // payment
+//            'payment' => [
+//                'merchant_id'        => '1491687852',
+//                'key'                => 'LO9ki8MJU7nhy6BGT5vfr4CDE3xsw2ZA',
+//                'cert_path'          => '/cert/apiclient_cert.pem', // XXX: 绝对路径！！！！
+//                'key_path'           => '/cert/apiclient_key.pem',      // XXX: 绝对路径！！！！
+//                'notify_url'         => 'https://pay.weixin.qq.com/wxpay/pay.action',       // 你也可以在下单时单独设置来想覆盖它
+//                // 'device_info'     => '013467007045764',
+//                // 'sub_app_id'      => '',
+//                // 'sub_merchant_id' => '',
+//                // ...
+//            ],
+//        ];
+//        $app = new Application($options);
 
-//        $app = new Application(config('wechat'));
+        $app = new Application(config('wechat'));
         $js = $app->js;
 
 //        return view('theatre/confirm_pay',['js'=>$js]);
