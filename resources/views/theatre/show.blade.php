@@ -327,23 +327,24 @@
 ////            else
 ////                checkimg.src = "/photos/seat.png";
 //
+            location.assign("/orderseat/" + $seat['id']);
 
-            $.mbox({
-                area: [ "300px", "auto" ], //弹框大小
-                border: [ 0, .5, "#666" ],
-                dialog: {
-                    msg: '您要购买茶位' + $seat['description'],
-                    btns: 2,   //1: 只有一个按钮   2：两个按钮  3：没有按钮 提示框
-                    type: 2,   //1:对钩   2：问号  3：叹号
-                    btn: [ "购买", "再看看"],  //自定义按钮
-                    yes: function() {  //点击左侧按钮：成功
-                        location.assign("/orderseat/" + $seat['id']);
-                    },
-                    no: function() { //点击右侧按钮：失败
-                        return false;
-                    }
-                }
-            });
+//            $.mbox({
+//                area: [ "300px", "auto" ], //弹框大小
+//                border: [ 0, .5, "#666" ],
+//                dialog: {
+//                    msg: '您要购买茶位' + $seat['description'],
+//                    btns: 2,   //1: 只有一个按钮   2：两个按钮  3：没有按钮 提示框
+//                    type: 2,   //1:对钩   2：问号  3：叹号
+//                    btn: [ "购买", "再看看"],  //自定义按钮
+//                    yes: function() {  //点击左侧按钮：成功
+//                        location.assign("/orderseat/" + $seat['id']);
+//                    },
+//                    no: function() { //点击右侧按钮：失败
+//                        return false;
+//                    }
+//                }
+//            });
 
 //            if (confirm('您要购买茶位' + $seat['description'] + '?')) {
 //                location.assign("/orderseat/" + $seat['id']);
