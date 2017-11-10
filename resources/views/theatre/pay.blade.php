@@ -30,7 +30,7 @@
 </script>
 <script>
     $(document).ready(function() {
-        {{--callpay(JSON.stringify('{{$config}}'));--}}
+        callpay('{{$json}}');
 
 
         {{--if (typeof WeixinJSBridge == "undefined"){--}}
@@ -192,19 +192,67 @@
     {{--};--}}
     {{--});--}}
 
-    function onBridgeReady($config){
-        WeixinJSBridge.invoke(
-            'getBrandWCPayRequest', $config
-//            {
-//                "appId":$config['appId'],     //公众号名称，由商户传入
-//                "timeStamp":$config['timestamp'],         //时间戳，自1970年以来的秒数
-//                "nonceStr":$config['nonceStr'], //随机串
-//                "package":$config['package'],
-//                "signType":$config['signType'],         //微信签名方式：
-//                "paySign":$config['paySign'], //微信签名
-//            },
-            function(res){
-//                if(res.err_msg == "get_brand_wcpay_request:ok" ) {}     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+    {{--function onBridgeReady($config){--}}
+        {{--WeixinJSBridge.invoke(--}}
+            {{--'getBrandWCPayRequest', $config--}}
+{{--//            {--}}
+{{--//                "appId":$config['appId'],     //公众号名称，由商户传入--}}
+{{--//                "timeStamp":$config['timestamp'],         //时间戳，自1970年以来的秒数--}}
+{{--//                "nonceStr":$config['nonceStr'], //随机串--}}
+{{--//                "package":$config['package'],--}}
+{{--//                "signType":$config['signType'],         //微信签名方式：--}}
+{{--//                "paySign":$config['paySign'], //微信签名--}}
+{{--//            },--}}
+            {{--function(res){--}}
+{{--//                if(res.err_msg == "get_brand_wcpay_request:ok" ) {}     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。--}}
+                {{--switch (res.err_msg){--}}
+                    {{--case 'get_brand_wcpay_request:cancel':--}}
+                        {{--alert('用户取消支付！');--}}
+                        {{--break;--}}
+                    {{--case 'get_brand_wcpay_request:fail':--}}
+                        {{--alert('支付失败！（'+res.err_desc+'）');--}}
+                        {{--break;--}}
+                    {{--case 'get_brand_wcpay_request:ok':--}}
+                        {{--alert('支付成功！');--}}
+                        {{--break;--}}
+                    {{--default:--}}
+                        {{--alert('ok');--}}
+                        {{--break;--}}
+                {{--}--}}
+            {{--}--}}
+        {{--);--}}
+    {{--}--}}
+    {{--if (typeof WeixinJSBridge == "undefined"){--}}
+        {{--if( document.addEventListener ){--}}
+            {{--document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);--}}
+        {{--}else if (document.attachEvent){--}}
+            {{--document.attachEvent('WeixinJSBridgeReady', onBridgeReady);--}}
+            {{--document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);--}}
+        {{--}--}}
+    {{--}else{--}}
+        {{--onBridgeReady("{{$json}}");--}}
+    {{--}--}}
+
+
+
+    function callpay($config)
+    {
+
+        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+            WeixinJSBridge.invoke('getBrandWCPayRequest', $config
+//                JSON.parse(JSON.stringify({
+//                    "appId":$config['appId'],     //公众号名称，由商户传入
+//                    "timeStamp":$config['timestamp'],         //时间戳，自1970年以来的秒数
+//                    "nonceStr":$config['nonceStr'], //随机串
+//                    "package":$config['package'],
+//                    "signType":$config['signType'],         //微信签名方式：
+//                    "paySign":$config['paySign'], //微信签名
+//                    "secret": $config['secret']
+//                }))
+                ,function(res){
+
+                WeixinJSBridge.log(res.err_msg);
+                //alert(res.err_code+res.err_desc+res.err_msg);
                 switch (res.err_msg){
                     case 'get_brand_wcpay_request:cancel':
                         alert('用户取消支付！');
@@ -219,57 +267,9 @@
                         alert('ok');
                         break;
                 }
-            }
-        );
+            });
+        }, false);
     }
-    if (typeof WeixinJSBridge == "undefined"){
-        if( document.addEventListener ){
-            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
-        }else if (document.attachEvent){
-            document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
-            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
-        }
-    }else{
-        onBridgeReady("{{$json}}");
-    }
-
-
-
-//    function callpay($config)
-//    {
-//
-//        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-//            WeixinJSBridge.invoke('getBrandWCPayRequest',
-//                JSON.parse(JSON.stringify({
-//                    "appId":$config['appId'],     //公众号名称，由商户传入
-//                    "timeStamp":$config['timestamp'],         //时间戳，自1970年以来的秒数
-//                    "nonceStr":$config['nonceStr'], //随机串
-//                    "package":$config['package'],
-//                    "signType":$config['signType'],         //微信签名方式：
-//                    "paySign":$config['paySign'], //微信签名
-//                    "secret": $config['secret']
-//                }))
-//                ,function(res){
-//
-//                WeixinJSBridge.log(res.err_msg);
-//                //alert(res.err_code+res.err_desc+res.err_msg);
-//                switch (res.err_msg){
-//                    case 'get_brand_wcpay_request:cancel':
-//                        alert('用户取消支付！');
-//                        break;
-//                    case 'get_brand_wcpay_request:fail':
-//                        alert('支付失败！（'+res.err_desc+'）');
-//                        break;
-//                    case 'get_brand_wcpay_request:ok':
-//                        alert('支付成功！');
-//                        break;
-//                    default:
-//                        alert('ok');
-//                        break;
-//                }
-//            });
-//        }, false);
-//    }
 </script>
 </body>
 </html>
