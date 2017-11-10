@@ -197,14 +197,14 @@
 
         document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
             WeixinJSBridge.invoke('getBrandWCPayRequest',
-                JSON.stringify({
+                JSON.parse(JSON.stringify({
                     "appId":$config['appId'],     //公众号名称，由商户传入
                     "timeStamp":$config['timestamp'],         //时间戳，自1970年以来的秒数
                     "nonceStr":$config['nonceStr'], //随机串
                     "package":$config['package'],
                     "signType":$config['signType'],         //微信签名方式：
                     "paySign":$config['paySign'] //微信签名
-                })
+                }))
                 ,function(res){
 
                 WeixinJSBridge.log(res.err_msg);
