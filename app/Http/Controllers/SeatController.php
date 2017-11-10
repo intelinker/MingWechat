@@ -227,8 +227,7 @@ class SeatController extends Controller
 //                 "timestamp"=> $config['timestamp']
 //            ];
             $json = $payment->configForPayment($prepayId); // 返回 json 字符串，如果想返回数组，传第二个参数 false
-//            dd($json);
-            return view('theatre/pay',['js'=>$js,'config'=>$config, 'json'=>$json]);
+            return view('theatre/pay',['js'=>$js,'config'=>$config, 'json'=>$json, 'package'=>$config['package']]);
         } else {
             var_dump($result);
             die("出错了。");  // 出错就说出来，不然还能怎样？
