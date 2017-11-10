@@ -30,7 +30,7 @@
 </script>
 <script>
     $(document).ready(function() {
-        callpay('{{$json}}');
+        callpay('{{$config}}');
 
         {{--if (typeof WeixinJSBridge == "undefined"){--}}
             {{--if (document.addEventListener) {--}}
