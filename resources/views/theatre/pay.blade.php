@@ -245,7 +245,7 @@
                     "nonceStr":$config['nonceStr'], //随机串
                     "package":'{{$package}}', //$config['package'],
                     "signType":$config['signType'],         //微信签名方式：
-                    "paySign":$config['paySign'], //微信签名
+                    "paySign":'{{$paySign}}'//$config['paySign'], //微信签名
                 }))
                 ,function(res){
 
