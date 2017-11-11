@@ -75,7 +75,7 @@ require_once "./example/WxPay.JsApiPay.php";
 require_once './example/log.php';
 
 //初始化日志
-$logHandler= new CLogFileHandler("../logs/".date('Y-m-d').'.log');
+$logHandler= new CLogFileHandler("./logs/".date('Y-m-d').'.log');
 $log = Log::Init($logHandler, 15);
 
 //打印输出数组信息
