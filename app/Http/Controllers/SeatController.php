@@ -221,9 +221,10 @@ class SeatController extends Controller
                 "appId" => $config['appId'],
                 "nonceStr"=>$config['nonceStr'],
                 "package"=> $config['package'],
-                 "paySign"=> $config['paySign'],
                  "signType"=> $config['signType'],
-                 "timestamp"=> $config['timestamp']
+                 "timestamp"=> $config['timestamp'],
+                 "paySign"=> $config['paySign'],
+
             ];
 
             $json = $payment->configForPayment($prepayId); // 返回 json 字符串，如果想返回数组，传第二个参数 false
