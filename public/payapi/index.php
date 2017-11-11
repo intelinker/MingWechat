@@ -82,6 +82,7 @@ $log = Log::Init($logHandler, 15);
 function printf_info($data)
 {
     foreach($data as $key=>$value){
+        echo "info";
         echo "<font color='#00ff55;'>$key</font> : $value <br/>";
     }
 }
