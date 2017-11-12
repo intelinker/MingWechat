@@ -236,14 +236,14 @@
 
     function callpay($config)
     {
-        {{--$json = {--}}
-            {{--"appId": 'wxd2ff9ea209f500d0',//$config['appId'],     //公众号名称，由商户传入 , //--}}
-            {{--"timeStamp":'{{$nonceStr}}', //$config['timestamp'],         //时间戳，自1970年以来的秒数--}}
-            {{--"nonceStr":'{{$nonceStr}}', //$config['nonceStr'], //随机串--}}
-            {{--"package":'{{$package}}', //$config['package'],--}}
-            {{--"signType":'{{$signType}}', //$config['signType'],         //微信签名方式：--}}
-            {{--"paySign":'{{$paySign}}'//$config['paySign'], //微信签名--}}
-        {{--};--}}
+        $config = JSON.parse(JSON.stringify({
+                    "appId": 'wxd2ff9ea209f500d0',//$config['appId'],     //公众号名称，由商户传入 , //
+                    "timeStamp":'{{$nonceStr}}', //$config['timestamp'],         //时间戳，自1970年以来的秒数
+                    "nonceStr":'{{$nonceStr}}', //$config['nonceStr'], //随机串
+                    "package":'{{$package}}', //$config['package'],
+                    "signType":'{{$signType}}', //$config['signType'],         //微信签名方式：
+                    "paySign":'{{$paySign}}'//$config['paySign'], //微信签名
+                }))
         alert($config);
         document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
             WeixinJSBridge.invoke('getBrandWCPayRequest', $config
