@@ -222,7 +222,7 @@ class SeatController extends Controller
                 "nonceStr"=>$config['nonceStr'],
                 "package"=> $config['package'],
                  "signType"=> $config['signType'],
-                 "timestamp"=> $config['timestamp'],
+                 "timeStamp"=> $config['timestamp'],
             ];
             $config["paySign"] = $this->MakeSign($config);
 
