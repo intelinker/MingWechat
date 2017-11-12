@@ -10,17 +10,17 @@
         //调用微信JS api 支付
         function jsApiCall()
         {
-            $config = {
-                "appId": 'wxd2ff9ea209f500d0',//$config['appId'],     //公众号名称，由商户传入 , //
-                "nonceStr":'{{$nonceStr}}', //$config['nonceStr'], //随机串
-                "package":'{{$package}}', //$config['package'],
-                "paySign":'{{$paySign}}',//$config['paySign'], //微信签名
-                "signType":'{{$signType}}', //$config['signType'],         //微信签名方式：
-                "timeStamp":'{{$nonceStr}}', //$config['timestamp'],         //时间戳，自1970年以来的秒数
-            }
+            {{--$config = {--}}
+                {{--"appId": 'wxd2ff9ea209f500d0',//$config['appId'],     //公众号名称，由商户传入 , //--}}
+                {{--"nonceStr":'{{$nonceStr}}', //$config['nonceStr'], //随机串--}}
+                {{--"package":'{{$package}}', //$config['package'],--}}
+                {{--"paySign":'{{$paySign}}',//$config['paySign'], //微信签名--}}
+                {{--"signType":'{{$signType}}', //$config['signType'],         //微信签名方式：--}}
+                {{--"timeStamp":'{{$nonceStr}}', //$config['timestamp'],         //时间戳，自1970年以来的秒数--}}
+            {{--}--}}
             WeixinJSBridge.invoke(
                 'getBrandWCPayRequest',
-                $config,
+                '{{$config}}',
                 function(res){
                     WeixinJSBridge.log(res.err_msg);
                     alert(res.err_code+res.err_desc+res.err_msg);
