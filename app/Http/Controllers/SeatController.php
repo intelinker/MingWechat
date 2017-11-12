@@ -224,7 +224,7 @@ class SeatController extends Controller
                  "signType"=> $config['signType'],
                  "timestamp"=> $config['timestamp'],
             ];
-            $config["paySign"] = $config['paySign'];
+            $config["paySign"] = $this->MakeSign();
 
             $json = $payment->configForPayment($prepayId); // 返回 json 字符串，如果想返回数组，传第二个参数 false
 //                        var_dump('config:'.$json);
