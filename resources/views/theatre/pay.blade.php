@@ -30,7 +30,7 @@
 
         function callpay()
         {
-            alert(JSON.stringify('{!! $config !!}'));
+            {{--alert(JSON.stringify('{!! $config !!}'));--}}
             if (typeof WeixinJSBridge == "undefined"){
                 if( document.addEventListener ){
                     document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
@@ -39,7 +39,7 @@
                     document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
                 }
             }else{
-                jsApiCall();
+                jsApiCall('{!! $config !!}');
             }
         }
     </script>
