@@ -56,7 +56,7 @@
 <hr>
 
 <div align="center">
-    <button style="width:210px; height:50px; border-radius: 15px;background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" type="button" onclick="callpay({!! $config !!})" >立即支付</button>
+    <button style="width:210px; height:50px; border-radius: 15px;background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" type="button" onclick="callpay('{!! $config !!}')" >立即支付</button>
 </div>
 
 
