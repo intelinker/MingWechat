@@ -51,9 +51,9 @@
 <h1>一盒火柴</h1>
 
 <div>
-    <p>您将购买$product->body</p>
-    <p>$product->detail</p>
-    <p>票价：$product->total_fee</p>
+    <p>您将购买{{$product->body}}</p>
+    <p>{{$product->detail}}</p>
+    <p>票价：{{$product->total_fee}}元</p>
 </div>
 
 <hr>
