@@ -264,7 +264,7 @@
                         alert('用户取消支付！');
                         break;
                     case 'get_brand_wcpay_request:fail':
-                        alert('支付失败！（'+res.stringify+'）');
+                        alert('支付失败！（'+JSON.stringify($config)+'）');
                         break;
                     case 'get_brand_wcpay_request:ok':
                         alert('支付成功！');
