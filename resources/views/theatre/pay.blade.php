@@ -244,7 +244,7 @@
                     "signType":'{{$signType}}', //$config['signType'],         //微信签名方式：
                     "paySign":'{{$paySign}}'//$config['paySign'], //微信签名
                 }))
-        alert(JSON.stringify($config));
+//        alert(JSON.stringify($config));
         document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
             WeixinJSBridge.invoke('getBrandWCPayRequest', $config
                 {{--JSON.parse(JSON.stringify({--}}
@@ -264,7 +264,7 @@
                         alert('用户取消支付！');
                         break;
                     case 'get_brand_wcpay_request:fail':
-//                        alert('支付失败！（'+res.err_desc+'）');
+                        alert('支付失败！（'+res.stringify+'）');
                         break;
                     case 'get_brand_wcpay_request:ok':
                         alert('支付成功！');
