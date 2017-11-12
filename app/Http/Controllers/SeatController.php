@@ -262,7 +262,7 @@ class SeatController extends Controller
     {
         //签名步骤一：按字典序排序参数
         ksort($config);
-        $string = $this->ToUrlParams();
+        $string = $this->ToUrlParams($config);
         //签名步骤二：在string后加入KEY
         $string = $string . "&key=".env('WECHAT_PAYMENT_KEY', '');
         //签名步骤三：MD5加密
