@@ -264,7 +264,7 @@ class SeatController extends Controller
         ksort($config);
         $string = $this->ToUrlParams($config);
         //签名步骤二：在string后加入KEY
-        $string = $string . "&key=".env('WECHAT_PAYMENT_KEY', '');
+        $string = $string . "&key=MJnxHFsxIAVzMMKfLHr7OxKRaQ0sFv4x";//.env('WECHAT_PAYMENT_KEY', '');
         //签名步骤三：MD5加密
         $string = md5($string);
         //签名步骤四：所有字符转为大写
