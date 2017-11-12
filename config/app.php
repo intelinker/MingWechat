@@ -165,6 +165,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 //        Overtrue\LaravelWeChat\ServiceProvider::class,
+        Overtrue\LaravelUEditor\UEditorServiceProvider::class,
 
         /*
          * Package Service Providers...

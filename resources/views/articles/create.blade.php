@@ -3,6 +3,7 @@
 @include('layouts.sidebar2')
 {{--@include('articles.sidebarCategory',['categories'=>$categories, 'types'=>$types, 'tag'=>$tags, 'currentAction'=>$currentAction])--}}
 @section('content')
+    @include('vendor.ueditor.assets')
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12" style="margin-top: 25px">
@@ -165,7 +166,9 @@
                             {{--<label class="col-lg-12 col-md-12 col-sm-12 clearfix">内容</label>--}}
                             <div class="clearfix"></div>
                             <div class="col-md-12">
-                                <textarea class="col-lg-12 col-md-12 col-sm-12 form-control clearfix" id="content" name="content" height="50"></textarea>
+                                {{--<textarea class="col-lg-12 col-md-12 col-sm-12 form-control clearfix" id="content" name="content" height="50"></textarea>--}}
+                                <!-- 编辑器容器 -->
+                                    <script id="container" name="content" type="text/plain"></script>
                                 @if ($errors->has('content'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('content') }}</strong>
@@ -214,6 +217,14 @@
     </div>
 
     <script src="{{ url('/src/js/vendor/tinymce/js/tinymce/tinymce.min.js') }}"></script>
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript">
+        var ue = UE.getEditor('container');
+        ue.ready(function() {
+            ue.execCommand('serverparam', '_token', '{{ csrf_token() }}'); // 设置 CSRF token.
+        });
+    </script>
+
     <script>
         document.getElementById("images1").onchange = function () {
             var reader = new FileReader();
