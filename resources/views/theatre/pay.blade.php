@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -49,15 +51,15 @@
 <h1>一盒火柴</h1>
 
 <div>
-    <p>您购买了“一盒火柴”，总价格： 0.01元。</p>
-    <p>数量：1盒。</p>
-    <p>{!! $config !!}</p>
+    <p>您将购买$product->body</p>
+    <p>$product->detail</p>
+    <p>票价：$product->total_fee</p>
 </div>
 
 <hr>
 
 <div align="center">
-    <button style="width:210px; height:50px; border-radius: 15px;background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" type="button" onclick="callpay({{$config}})" >立即支付</button>
+    <button style="width:210px; height:50px; border-radius: 15px;background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" type="button" onclick="callpay({{$config}})" >购票</button>
 </div>
 
 
