@@ -8,7 +8,7 @@
 
     <script type="text/javascript">
         //调用微信JS api 支付
-        function jsApiCall()
+        function jsApiCall($config)
         {
             {{--$config = {--}}
                 {{--"appId": 'wxd2ff9ea209f500d0',//$config['appId'],     //公众号名称，由商户传入 , //--}}
@@ -28,9 +28,9 @@
             );
         }
 
-        function callpay()
+        function callpay($config)
         {
-            {{--alert(JSON.stringify('{!! $config !!}'));--}}
+            alert($config);
             if (typeof WeixinJSBridge == "undefined"){
                 if( document.addEventListener ){
                     document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
@@ -39,7 +39,7 @@
                     document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
                 }
             }else{
-                jsApiCall('{!! $config !!}');
+                jsApiCall($config);
             }
         }
     </script>
@@ -56,7 +56,7 @@
 <hr>
 
 <div align="center">
-    <button style="width:210px; height:50px; border-radius: 15px;background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" type="button" onclick="callpay()" >立即支付</button>
+    <button style="width:210px; height:50px; border-radius: 15px;background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" type="button" onclick="callpay({!! $config !!})" >立即支付</button>
 </div>
 
 
