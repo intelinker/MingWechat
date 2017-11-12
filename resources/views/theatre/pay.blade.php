@@ -244,7 +244,7 @@
                     "signType":'{{$signType}}', //$config['signType'],         //微信签名方式：
                     "paySign":'{{$paySign}}'//$config['paySign'], //微信签名
                 }))
-        alert($config);
+        alert(JSON.stringify($config));
         document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
             WeixinJSBridge.invoke('getBrandWCPayRequest', $config
                 {{--JSON.parse(JSON.stringify({--}}
