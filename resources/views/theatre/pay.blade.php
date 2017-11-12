@@ -15,9 +15,8 @@
 
 <hr>
 
-<div>
-    {{--<input name="button" id="btnPay" type="button" value="支付"  onclick="pay($json)"/>--}}
-    <a id="weiXinPay" class="btn btn-lg btn-primary" role="button">支付</a>
+<div align="center">
+    <button style="width:210px; height:50px; border-radius: 15px;background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" type="button" onclick="callpay('{!! $json !!}')" >立即支付</button>
 </div>
 
 
