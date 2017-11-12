@@ -65,15 +65,15 @@
 
 
 
-<script type="text/javascript" charset="utf-8">
-    wx.config({{ $js->config(array('chooseWXPay')) }});
-</script>
-<script>
+{{--<script type="text/javascript" charset="utf-8">--}}
+    {{--wx.config({{ $js->config(array('chooseWXPay')) }});--}}
+{{--</script>--}}
+{{--<script>--}}
 
 
 
-    $(document).ready(function() {
-        callpay('{!! $json !!}');
+    {{--$(document).ready(function() {--}}
+        {{--callpay('{!! $json !!}');--}}
 
         {{--if (typeof WeixinJSBridge == "undefined"){--}}
             {{--if (document.addEventListener) {--}}
@@ -104,7 +104,7 @@
             {{--});--}}
         {{--}--}}
 
-//        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+{{--//        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {--}}
             {{--if( typeof WeixinJSBridge === 'undefined' ) {--}}
                 {{--alert('请在微信打开页面！');--}}
                 {{--return false;--}}
@@ -128,30 +128,30 @@
                         {{--break;--}}
                 {{--}--}}
             {{--});--}}
-//        }, false);
+{{--//        }, false);--}}
 
-//        if( typeof WeixinJSBridge === 'undefined' ) {
-//            alert('请在微信在打开页面！');
-//            return false;
-//        }
-//        WeixinJSBridge.invoke(
-//            'getBrandWCPayRequest', $json, function(res) {
-//                switch(res.err_msg) {
-//                    case 'get_brand_wcpay_request:cancel':
-//                        alert('用户取消支付！');
-//                        break;
-//                    case 'get_brand_wcpay_request:fail':
-//                        alert('支付失败！（'+res.err_desc+'）');
-//                        break;
-//                    case 'get_brand_wcpay_request:ok':
-//                        alert('支付成功！');
-//                        break;
-//                    default:
-//                        alert(JSON.stringify(res));
-//                        break;
-//                }
-//            }
-//        );
+{{--//        if( typeof WeixinJSBridge === 'undefined' ) {--}}
+{{--//            alert('请在微信在打开页面！');--}}
+{{--//            return false;--}}
+{{--//        }--}}
+{{--//        WeixinJSBridge.invoke(--}}
+{{--//            'getBrandWCPayRequest', $json, function(res) {--}}
+{{--//                switch(res.err_msg) {--}}
+{{--//                    case 'get_brand_wcpay_request:cancel':--}}
+{{--//                        alert('用户取消支付！');--}}
+{{--//                        break;--}}
+{{--//                    case 'get_brand_wcpay_request:fail':--}}
+{{--//                        alert('支付失败！（'+res.err_desc+'）');--}}
+{{--//                        break;--}}
+{{--//                    case 'get_brand_wcpay_request:ok':--}}
+{{--//                        alert('支付成功！');--}}
+{{--//                        break;--}}
+{{--//                    default:--}}
+{{--//                        alert(JSON.stringify(res));--}}
+{{--//                        break;--}}
+{{--//                }--}}
+{{--//            }--}}
+{{--//        );--}}
 
 
         {{--WeixinJSBridge.invoke(--}}
@@ -190,7 +190,7 @@
                 {{--alert("支付失败，请返回重试。");--}}
             {{--}--}}
         {{--});--}}
-    });
+    {{--});--}}
 
 
     {{--function pay($config) {--}}
@@ -220,12 +220,12 @@
         {{--});--}}
     {{--}--}}
 
-//    $(function(){
-//
-//        $("#btnPay").click(function(){
-//
-//        });
-//    });
+{{--//    $(function(){--}}
+{{--//--}}
+{{--//        $("#btnPay").click(function(){--}}
+{{--//--}}
+{{--//        });--}}
+{{--//    });--}}
 
     {{--$(document).on('WeixinJSBridgeReady',function(){--}}
         {{--$('#weiXinPay').onclick = function (e) {--}}
@@ -319,7 +319,7 @@
             {{--}--}}
             {{--);--}}
         {{--}, false);--}}
-    }
-</script>
+    {{--}--}}
+{{--</script>--}}
 </body>
 </html>
