@@ -3,43 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>购买支付</title>
-    {{--<script type="text/javascript">--}}
-        {{--//调用微信JS api 支付--}}
-        {{--function jsApiCall()--}}
-        {{--{--}}
-            {{--$config = {--}}
-                {{--"appId": 'wxd2ff9ea209f500d0',//$config['appId'],     //公众号名称，由商户传入 , //--}}
-                {{--"timeStamp":'{{$nonceStr}}', //$config['timestamp'],         //时间戳，自1970年以来的秒数--}}
-                {{--"nonceStr":'{{$nonceStr}}', //$config['nonceStr'], //随机串--}}
-                {{--"package":'{{$package}}', //$config['package'],--}}
-                {{--"signType":'{{$signType}}', //$config['signType'],         //微信签名方式：--}}
-                {{--"paySign":'{{$paySign}}'//$config['paySign'], //微信签名--}}
-            {{--}--}}
-            {{--WeixinJSBridge.invoke(--}}
-                {{--'getBrandWCPayRequest',--}}
-                {{--$config,--}}
-                {{--function(res){--}}
-                    {{--WeixinJSBridge.log(res.err_msg);--}}
-                    {{--alert(res.err_code+res.err_desc+res.err_msg);--}}
-                {{--}--}}
-            {{--);--}}
-        {{--}--}}
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ url('/src/js/jQuery.min.2.2.4.js') }}" ></script>
 
-        {{--function callpay()--}}
-        {{--{--}}
-            {{--alert({!! $config !!})--}}
-            {{--if (typeof WeixinJSBridge == "undefined"){--}}
-                {{--if( document.addEventListener ){--}}
-                    {{--document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);--}}
-                {{--}else if (document.attachEvent){--}}
-                    {{--document.attachEvent('WeixinJSBridgeReady', jsApiCall);--}}
-                    {{--document.attachEvent('onWeixinJSBridgeReady', jsApiCall);--}}
-                {{--}--}}
-            {{--}else{--}}
-                {{--jsApiCall();--}}
-            {{--}--}}
-        {{--}--}}
-    {{--</script>--}}
+    <script type="text/javascript">
+        //调用微信JS api 支付
+        function jsApiCall()
+        {
+            $config = {
+                "appId": 'wxd2ff9ea209f500d0',//$config['appId'],     //公众号名称，由商户传入 , //
+                "timeStamp":'{{$nonceStr}}', //$config['timestamp'],         //时间戳，自1970年以来的秒数
+                "nonceStr":'{{$nonceStr}}', //$config['nonceStr'], //随机串
+                "package":'{{$package}}', //$config['package'],
+                "signType":'{{$signType}}', //$config['signType'],         //微信签名方式：
+                "paySign":'{{$paySign}}'//$config['paySign'], //微信签名
+            }
+            WeixinJSBridge.invoke(
+                'getBrandWCPayRequest',
+                $config,
+                function(res){
+                    WeixinJSBridge.log(res.err_msg);
+                    alert(res.err_code+res.err_desc+res.err_msg);
+                }
+            );
+        }
+
+        function callpay()
+        {
+            alert({!! $config !!})
+            if (typeof WeixinJSBridge == "undefined"){
+                if( document.addEventListener ){
+                    document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+                }else if (document.attachEvent){
+                    document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                    document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+                }
+            }else{
+                jsApiCall();
+            }
+        }
+    </script>
 </head>
 <body>
 
@@ -58,9 +61,7 @@
 
 
 
-<script src="{{ url('/src/js/jQuery.min.2.2.4.js') }}" ></script>
 
-<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" charset="utf-8">
     wx.config({{ $js->config(array('chooseWXPay')) }});
 </script>
