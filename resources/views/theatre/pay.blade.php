@@ -52,6 +52,7 @@
 
     function callpay()
     {
+        alert({!! $config !!})
         if (typeof WeixinJSBridge == "undefined"){
             if( document.addEventListener ){
                 document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
