@@ -76,6 +76,7 @@ class WechatController extends Controller
     public function index()
     {
         $users = $this->wechat->user->lists();
+
         return $users;
     }
 

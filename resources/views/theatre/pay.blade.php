@@ -57,6 +57,22 @@
             function(res){
                 WeixinJSBridge.log(res.err_msg);
                 alert(res.err_code+res.err_desc+res.err_msg);
+
+                switch (res.err_msg){
+                case 'get_brand_wcpay_request:cancel':
+//                alert('用户取消支付！');
+                break;
+                case 'get_brand_wcpay_request:fail':
+//                alert('支付失败！（'+JSON.stringify($config)+'）');
+                break;
+                case 'get_brand_wcpay_request:ok':
+//                alert('支付成功！');
+                        location.assign("/orderseat/" + $seat['id']);
+                break;
+                default:
+                alert('ok');
+                break;
+                }
             }
         );
     }

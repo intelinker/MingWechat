@@ -10,8 +10,8 @@ class Seat extends Model
         'available', 'order', 'buyer_id', 'price',
     ];
 
-    public function theartre() {
-        return $this->belongsTo('App\Theartre', 'theartre_id');
+    public function theatre() {
+        return $this->belongsTo('App\Theartre', 'theatre_id');
     }
 
     public function buyer() {

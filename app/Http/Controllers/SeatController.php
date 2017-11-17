@@ -3,18 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Seat;
+use App\Ticket;
 use BaconQrCode\Encoder\QrCode;
 use EasyWeChat\Foundation\Application;
+use EasyWeChat\Message\Image;
+use EasyWeChat\Message\News;
+use EasyWeChat\Message\Text;
 use EasyWeChat\Payment\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SeatController extends Controller
 {
-//    public $app;
-//
-//    /**
-//     * SeatController constructor.
-//     */
+    public $app;
+
+    /**
+     * SeatController constructor.
+     */
+    public function __construct(Application $wechat)
+    {
+        $this->app = $wechat;
+    }
 //    public function __construct()
 //    {
 //        $options = [
@@ -126,7 +135,7 @@ class SeatController extends Controller
      */
     public function edit(Seat $seat)
     {
-        //
+
     }
 
     /**
@@ -191,13 +200,12 @@ class SeatController extends Controller
 //        ];
 //        $app = new Application($options);
 
-        $app = new Application(config('wechat'));
-        $js = $app->js;
+//        $app = new Application(config('wechat'));
+//        $js = $app->js;
 
 //        return view('theatre/confirm_pay',['js'=>$js]);
         $seat = Seat::findOrFail($seatid);
         $user = session('wechat.oauth_user'); // 拿到授权用户资料
-//                dd($user->getId());
         $tradeNo = strtotime('now') * 1990 + 2017;
         $product = [
             'trade_type'       => 'JSAPI', // JSAPI，NATIVE，APP...
@@ -206,12 +214,17 @@ class SeatController extends Controller
             'out_trade_no'     => $tradeNo,
             'total_fee'        => intval(round(floatval($seat->price) * 100)),
             'openid'           => $user->getId(),
-            'notify_url'       => 'https://pay.weixin.qq.com/wxpay/pay.action', // 支付结果通知网址，如果不设置则会使用配置里的默认地址，我就没有在这里配，因为在.env内已经配置了。
+            'notify_url'       => 'http://ming.cure4.net/ticket/'.$seat->id //'https://pay.weixin.qq.com/wxpay/pay.action', // 支付结果通知网址，如果不设置则会使用配置里的默认地址，我就没有在这里配，因为在.env内已经配置了。
             // ...
         ];
 //        创建订单
+
+
         $order = new Order($product);
-        $payment = $app->payment;
+        //                dd($user->getId());
+//        dd($order);
+
+        $payment = $this->app->payment;
         $result = $payment->prepare($order); // 这里的order是上面一步得来的。 这个prepare()帮你计算了校验码，帮你获取了prepareId.省心。
         $prepayId = null;
         if ($result->return_code == 'SUCCESS' && $result->result_code == 'SUCCESS'){
@@ -225,7 +238,7 @@ class SeatController extends Controller
                  "timeStamp"=> $config['timestamp'],
             ];
             $config["paySign"] = $this->MakeSign($config);
-//            dd($product);
+//            dd($result);
             $json = $payment->configForPayment($prepayId); // 返回 json 字符串，如果想返回数组，传第二个参数 false
 //                        var_dump('config:'.$json);
 
@@ -236,6 +249,39 @@ class SeatController extends Controller
             die("出错了。");  // 出错就说出来，不然还能怎样？
         }
 
+    }
+
+    public function editSeats($theatre) {
+        $seats = Seat::where('theatre_id', $theatre)->get();
+        return view('theatre/edit', ['seats'=>$seats]);
+    }
+
+    public function setAvailable($theatre, $seatid, $available) {
+//        $seat = Seat::findOrFail($seatid);
+//        $seat->available = $available;
+//        $seat->update($seat);
+        Seat::where('id', $seatid)->update(['available'=>$available]);
+        $seats = Seat::where('theatre_id', $theatre)->get();
+        return view('theatre/edit', ['seats'=>$seats]);
+    }
+
+    /*
+ * 生成随机字符串 生成唯一字符串用到的方法有 md5(),uniqid(),microtime()
+ * @param int $length 生成随机字符串的长度
+ * @param string $char 组成随机字符串的字符串
+ * @return string $string 生成的随机字符串
+ */
+    function str_rand($length = 8, $char = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') {
+        if(!is_int($length) || $length < 0) {
+            return false;
+        }
+
+        $string = '';
+        for($i = $length; $i > 0; $i--) {
+            $string .= $char[mt_rand(0, strlen($char) - 1)];
+        }
+
+        return $string;
     }
 
     /**
@@ -273,157 +319,84 @@ class SeatController extends Controller
         return $result;
     }
 
-    public function buySeat($seat) {
+    public function ticketForSeat($seatid) {
+        $response = $this->app->payment->handleNotify(function($notify, $successful){
+            dd($notify.' : '.$successful);
+            return true; // 或者错误消息
+        });
+        dd($response);
+        return $response;
+        $seat = Seat::findOrFail($seatid);
+        $playtime = strtotime($seat->playtime);
+        $nowtime  = strtotime('now');
+//        dd($seat->theatre);
 
+        $code = $this->str_rand(8);
+        $openid = session('wechat.oauth_user')->getId(); // 拿到授权用户资料
+        $order = \App\Order::create([
+            'order_type' => 1,
+            'title' => $seat->theatre->name.':'.$seat->description,
+            'description' => $seat->description,
+            'wechat_order' => 1, //$worder,
+            'detail' => $seat->playtime,
+            'fee' => $seat->price,
+            'openid' => $openid,
+            'code'   => $code,
+            'product_id' => $seat->id,
+            'model' => $seat->theatre->name,
+            'created_by' => 1, //should replaced by auth userid,
+            'updated_by' => 1, //should replaced by auth userid,
+        ]);
 
-//        $attributes = [
-//            'trade_type'       => 'JSAPI', // JSAPI，NATIVE，APP...
-//            'body'             => '您将购买舍得茶馆座位。开场时间:'.date('m月d日 H:i',$seat->playtime),
-//            'detail'           => $seat->description,
-//            'out_trade_no'     => '1217752501201407033233368018',
-//            'total_fee'        => $seat->price,
-//            'notify_url'       => 'http://xxx.com/order-notify', // 支付结果通知网址，如果不设置则会使用配置里的默认地址，我就没有在这里配，因为在.env内已经配置了。
-//            // ...
-//        ];
-//// 创建订单
-//        $order = new Order($attributes);
+        $url = 'http://ming.cure4.net/checkticket/'.$order->id.'/'.$openid.'/'.$code;
+        $qrCode = new \Endroid\QrCode\QrCode($url);
+        $qrCode->setSize(300);
+        $path = 'qrcode/tickets/'.$code.'.png';
+        // Save it to a file
+        $qrCode->writeFile($path);
+
+//        $app = new Application(config('wechat'));
+        $image = $this->app->material->uploadImage($path);
+        $order->update([
+            'media_id' => $image['media_id'],
+            'media_url'=> $image['url'],
+        ]);
+
+        $app->staff->message(new Text(['content' => '请保留好您的二维码，该二维码将作为您的购票凭证']));
+        $app->staff->message($image)->to($openid)->send();
+
+        // Directly output the QR code
+//        header('Content-Type: '.$qrCode->getContentType());
+//        dd($qrCode->writeString());
+
+//        $qrcode = $app->qrcode;
+//        $result = $qrcode->card([
+//            "card_id" => $order->id,
+//            "code"    => $order->code,
+//            "openid"  => $order->openid,
+//            "expire_seconds" => $playtime - $nowtime + 2* 3600,
+//            "is_unique_code" => true,
+//        ]);//temporary(56, $playtime - $nowtime + 2* 3600); //有效期购票时间开始至开场后2小时
+//        dd($result);
+//        $ticket = $result->ticket;// 或者 $result['ticket']
+////        $expireSeconds = $result->expire_seconds; // 有效秒数
+//        $url = $result->url; // 二维码图片解析后的地址，开发者可根据该地址自行生成需要的二维码图片
+//        dd($url);
 //
-//        $payment = $this->app->payment;
-//        $result = $payment->prepare($order);
-//        if ($result->return_code == 'SUCCESS' && $result->result_code == 'SUCCESS')
-//        {
-//            //生产那个订单后的逻辑
-////            \Log::info('生成订单号..'.$data->order_guid);
-//            //这一块是以ajax形式返回到页面上。
-//            //用户的体验就是点击【确认支付】，验证码以弹层页面出来了（没错，还需要一个好用的弹层js）。
-//            $ajax_data=[
-//                'html'         =>   json_encode(QrCode::size(250)->generate($result['code_url'])),
-//                'out_trade_no' =>  $data->order_guid,
-//                'price'        =>  $data->price
-//            ];
-//            return $ajax_data;
-//        }else{
-//            return back()->withErrors('生成订单错误！');
-//        }
-
-    }
-}
-
-class WxPayDataBase
-{
-    protected $values = array();
-
-    /**
-     * 设置签名，详见签名生成算法
-     * @param string $value
-     **/
-    public function SetSign()
-    {
-        $sign = $this->MakeSign();
-        $this->values['sign'] = $sign;
-        return $sign;
+//        $news = new News([
+//            'title'       => $order['title'],
+//            'description' => '...',
+//            'url'         => $url,
+//            'image'       => $image,
+//        ]);
     }
 
-    /**
-     * 获取签名，详见签名生成算法的值
-     * @return 值
-     **/
-    public function GetSign()
-    {
-        return $this->values['sign'];
-    }
+    public function checkTicket($orderid, $openid, $code) {
+        $order = \App\Order::where('id', $orderid)
+                    ->where('openid', $openid)
+                    ->where('code', $code)->first;
+        if (count($order) > 0) {
 
-    /**
-     * 判断签名，详见签名生成算法是否存在
-     * @return true 或 false
-     **/
-    public function IsSignSet()
-    {
-        return array_key_exists('sign', $this->values);
-    }
-
-    /**
-     * 输出xml字符
-     * @throws WxPayException
-     **/
-    public function ToXml()
-    {
-        if(!is_array($this->values)
-            || count($this->values) <= 0)
-        {
-            throw new WxPayException("数组数据异常！");
         }
-
-        $xml = "<xml>";
-        foreach ($this->values as $key=>$val)
-        {
-            if (is_numeric($val)){
-                $xml.="<".$key.">".$val."</".$key.">";
-            }else{
-                $xml.="<".$key."><![CDATA[".$val."]]></".$key.">";
-            }
-        }
-        $xml.="</xml>";
-        return $xml;
-    }
-
-    /**
-     * 将xml转为array
-     * @param string $xml
-     * @throws WxPayException
-     */
-    public function FromXml($xml)
-    {
-        if(!$xml){
-            throw new WxPayException("xml数据异常！");
-        }
-        //将XML转为array
-        //禁止引用外部xml实体
-        libxml_disable_entity_loader(true);
-        $this->values = json_decode(json_encode(simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA)), true);
-        return $this->values;
-    }
-
-    /**
-     * 格式化参数格式化成url参数
-     */
-    public function ToUrlParams()
-    {
-        $buff = "";
-        foreach ($this->values as $k => $v)
-        {
-            if($k != "sign" && $v != "" && !is_array($v)){
-                $buff .= $k . "=" . $v . "&";
-            }
-        }
-
-        $buff = trim($buff, "&");
-        return $buff;
-    }
-
-    /**
-     * 生成签名
-     * @return 签名，本函数不覆盖sign成员变量，如要设置签名需要调用SetSign方法赋值
-     */
-    public function MakeSign()
-    {
-        //签名步骤一：按字典序排序参数
-        ksort($this->values);
-        $string = $this->ToUrlParams();
-        //签名步骤二：在string后加入KEY
-        $string = $string . "&key=".WxPayConfig::KEY;
-        //签名步骤三：MD5加密
-        $string = md5($string);
-        //签名步骤四：所有字符转为大写
-        $result = strtoupper($string);
-        return $result;
-    }
-
-    /**
-     * 获取设置的值
-     */
-    public function GetValues()
-    {
-        return $this->values;
     }
 }

@@ -16,7 +16,8 @@ class CreateTheartresTable extends Migration
         Schema::create('theartres', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('description');
+            $table->string('address')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }
