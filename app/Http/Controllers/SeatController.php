@@ -102,23 +102,23 @@ class SeatController extends Controller
         //
     }
 
-//    public function getSeatsForTheartre($theatre) {
-//        $seats = Seat::where('theatre_id', $theatre)->get();
-////        $k = count($seats);
-////        $rows = count(Seat::where('theartre_id', $theartre)->where('line', 1)->get());
-////        $lines = $k/$rows;
-////        $seatsLines = array();
-////        for($i=0; $i<$lines; $i++) {
-////            $seatsRows = array();
-////            for ($j=0; $j<$rows; $j++) {
-////                $seat = $seats[$k];
-////                array_push($seatsRows, $seat);
-////                $k++;
-////            }
-////            array_push($seatsLines, $seatsRows);
-////        }
-//        return view('theatre/show', ['seats'=>$seats]);
-//    }
+    public function getSeatsForTheartre($theatre) {
+        $seats = Seat::where('theatre_id', $theatre)->get();
+//        $k = count($seats);
+//        $rows = count(Seat::where('theartre_id', $theartre)->where('line', 1)->get());
+//        $lines = $k/$rows;
+//        $seatsLines = array();
+//        for($i=0; $i<$lines; $i++) {
+//            $seatsRows = array();
+//            for ($j=0; $j<$rows; $j++) {
+//                $seat = $seats[$k];
+//                array_push($seatsRows, $seat);
+//                $k++;
+//            }
+//            array_push($seatsLines, $seatsRows);
+//        }
+        return view('theatre/show', ['seats'=>$seats]);
+    }
 
     public function getSeatsForScens($scene) {
         $seats = Seat::where('theatre_id', $scene)->get();
