@@ -102,8 +102,43 @@ class OrderController extends Controller
     public function orderForSeat($seatid) {
         $response = $this->app->payment->handleNotify(function($notify, $successful){
             dd($notify.' : '.$successful);
+            Order::create([
+                'order_type' => 1,
+                'title' => 'order response',
+                'description' => $notify,
+                'wechat_order' => 1, //$worder,
+                'trade_no'     => 1,
+                'detail' => $successful,
+                'fee' => 1,
+                'openid' => 'openid',
+                'count'  => 1,
+                'code'   => 'code',
+                'product_id' => 'pid',
+                'model' => 'model',
+                'media_id' => 1,
+                'created_by' => 1, //should replaced by auth userid,
+                'updated_by' => 1, //should replaced by auth userid,
+            ]);
             return true; // 或者错误消息
         });
+        Order::create([
+            'order_type' => 1,
+            'title' => 'order response',
+            'description' => 'result',
+            'wechat_order' => 1, //$worder,
+            'trade_no'     => 1,
+            'detail' => 'result',
+            'fee' => 1,
+            'openid' => 'openid',
+            'code'   => 'code',
+            'product_id' => 'pid',
+            'count'  => 1,
+            'media_id' => 1,
+            'model' => 'model',
+            'created_by' => 1, //should replaced by auth userid,
+            'updated_by' => 1, //should replaced by auth userid,
+        ]);
+        return true; // 或者错误消息
 //        dd($response);
         return $response;
         $seat = Seat::findOrFail($seatid);
@@ -113,7 +148,7 @@ class OrderController extends Controller
 
         $code = $this->str_rand(8);
         $openid = session('wechat.oauth_user')->getId(); // 拿到授权用户资料
-        $order = \App\Order::create([
+        $order = Order::create([
             'order_type' => 1,
             'title' => $seat->theatre->name.':'.$seat->description,
             'description' => $seat->description,
