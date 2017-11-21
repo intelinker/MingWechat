@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTheartresTable extends Migration
+class CreateScenesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,16 @@ class CreateTheartresTable extends Migration
      */
     public function up()
     {
-        Schema::create('theartres', function (Blueprint $table) {
+        Schema::create('scenes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('address')->nullable();
+            $table->string('theme')->nullable();
             $table->string('description')->nullable();
+            $table->string('theatre_id')->default(1);
             $table->integer('lines')->default(1);
             $table->integer('rows')->default(1);
+            $table->dateTime('playtime')->nullable();
+            $table->integer('duration')->nullable();
+            $table->float('price')->default(0);
             $table->timestamps();
         });
     }
@@ -31,6 +34,6 @@ class CreateTheartresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('theartres');
+        Schema::dropIfExists('scenes');
     }
 }

@@ -23,13 +23,16 @@ Route::group(['middleware' => ['web']], function () {
     Route::resource('seats', 'SeatController');
     Route::resource('articles', 'ArticleController');
     Route::resource('orders', 'OrderController');
+    Route::resource('scenes', 'SceneController');
+    Route::resource('theatres', 'TheatreController');
     Route::get('getseats/{theatre}', 'SeatController@getSeatsForTheartre');
-    Route::get('seatavailable/{theatre}/{seatid}/{available}', 'SeatController@setAvailable');
+    Route::get('seatavailable/{seatid}/{available}', 'SeatController@setAvailable');
     Route::get('editseats/{theatre}', 'SeatController@editSeats');
     Route::get('delmenu/{menuid}', 'MenuController@delMenu');
-    Route::get('ticket/{seat}', 'SeatController@ticketForSeat');
-    Route::get('checkticket/{order}/{openid}/{code}', 'SeatController@checkTicket');
+    Route::get('ticket/{seat}', 'OrderController@orderForSeat');
+    Route::get('checkticket/{openid}/{code}', 'SeatController@checkTicket');
     Route::post('payresponse', 'OrderController@payResponse');
+    Route::get('createtheatre/{theatre}', 'SceneController@createForTheatre');
 });
 
 Route::group(['middleware' => ['web', 'wechat.oauth']], function () {

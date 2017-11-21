@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Scene;
 use App\Seat;
 use App\Ticket;
 use BaconQrCode\Encoder\QrCode;
@@ -24,66 +25,6 @@ class SeatController extends Controller
     {
         $this->app = $wechat;
     }
-//    public function __construct()
-//    {
-//        $options = [
-//            /**
-//             * Debug 模式，bool 值：true/false
-//             *
-//             * 当值为 false 时，所有的日志都不会记录
-//             */
-//            'debug'  => true,
-//
-//            /**
-//             * 账号基本信息，请从微信公众平台/开放平台获取
-//             */
-//            'app_id'  => 'your-app-id',         // AppID
-//            'secret'  => 'your-app-secret',     // AppSecret
-//            'token'   => 'your-token',          // Token
-//            'aes_key' => '',                    // EncodingAESKey，安全模式下请一定要填写！！！
-//
-//            /**
-//             * 日志配置
-//             *
-//             * level: 日志级别, 可选为：
-//             *         debug/info/notice/warning/error/critical/alert/emergency
-//             * permission：日志文件权限(可选)，默认为null（若为null值,monolog会取0644）
-//             * file：日志文件位置(绝对路径!!!)，要求可写权限
-//             */
-//            'log' => [
-//                'level'      => 'debug',
-//                'permission' => 0777,
-//                'file'       => '/tmp/easywechat.log',
-//            ],
-//
-//            /**
-//             * OAuth 配置
-//             *
-//             * scopes：公众平台（snsapi_userinfo / snsapi_base），开放平台：snsapi_login
-//             * callback：OAuth授权完成后的回调页地址
-//             */
-//            'oauth' => [
-//                'scopes'   => ['snsapi_userinfo'],
-//                'callback' => '/examples/oauth_callback.php',
-//            ],
-//
-//            /**
-//             * 微信支付
-//             */
-//            'payment' => [
-//                'merchant_id'        => 'your-mch-id',
-//                'key'                => 'key-for-signature',
-//                'cert_path'          => 'path/to/your/cert.pem', // XXX: 绝对路径！！！！
-//                'key_path'           => 'path/to/your/key',      // XXX: 绝对路径！！！！
-//                'notify_url'         => '默认的订单回调地址',       // 你也可以在下单时单独设置来想覆盖它
-//                // 'device_info'     => '013467007045764',
-//                // 'sub_app_id'      => '',
-//                // 'sub_merchant_id' => '',
-//                // ...
-//            ],
-//        ];
-//        $this->app = new Application($options);
-//    }
 
     /**
      * Display a listing of the resource.
@@ -161,8 +102,26 @@ class SeatController extends Controller
         //
     }
 
-    public function getSeatsForTheartre($theatre) {
-        $seats = Seat::where('theatre_id', $theatre)->get();
+//    public function getSeatsForTheartre($theatre) {
+//        $seats = Seat::where('theatre_id', $theatre)->get();
+////        $k = count($seats);
+////        $rows = count(Seat::where('theartre_id', $theartre)->where('line', 1)->get());
+////        $lines = $k/$rows;
+////        $seatsLines = array();
+////        for($i=0; $i<$lines; $i++) {
+////            $seatsRows = array();
+////            for ($j=0; $j<$rows; $j++) {
+////                $seat = $seats[$k];
+////                array_push($seatsRows, $seat);
+////                $k++;
+////            }
+////            array_push($seatsLines, $seatsRows);
+////        }
+//        return view('theatre/show', ['seats'=>$seats]);
+//    }
+
+    public function getSeatsForScens($scene) {
+        $seats = Seat::where('theatre_id', $scene)->get();
 //        $k = count($seats);
 //        $rows = count(Seat::where('theartre_id', $theartre)->where('line', 1)->get());
 //        $lines = $k/$rows;
@@ -176,34 +135,11 @@ class SeatController extends Controller
 //            }
 //            array_push($seatsLines, $seatsRows);
 //        }
-        return view('theatre/show', ['seats'=>$seats]);
+        return view('scene/show', ['seats'=>$seats]);
     }
 
-
     public function orderSeat($seatid) {
-//        $options = [
-//            // 前面的appid什么的也得保留哦
-//            'app_id' => 'wxd2ff9ea209f500d0',
-//            // ...
-//            // payment
-//            'payment' => [
-//                'merchant_id'        => '1491687852',
-//                'key'                => 'LO9ki8MJU7nhy6BGT5vfr4CDE3xsw2ZA',
-//                'cert_path'          => '/cert/apiclient_cert.pem', // XXX: 绝对路径！！！！
-//                'key_path'           => '/cert/apiclient_key.pem',      // XXX: 绝对路径！！！！
-//                'notify_url'         => 'https://pay.weixin.qq.com/wxpay/pay.action',       // 你也可以在下单时单独设置来想覆盖它
-//                // 'device_info'     => '013467007045764',
-//                // 'sub_app_id'      => '',
-//                // 'sub_merchant_id' => '',
-//                // ...
-//            ],
-//        ];
-//        $app = new Application($options);
 
-//        $app = new Application(config('wechat'));
-//        $js = $app->js;
-
-//        return view('theatre/confirm_pay',['js'=>$js]);
         $seat = Seat::findOrFail($seatid);
         $user = session('wechat.oauth_user'); // 拿到授权用户资料
         $tradeNo = strtotime('now') * 1990 + 2017;
@@ -256,13 +192,14 @@ class SeatController extends Controller
         return view('theatre/edit', ['seats'=>$seats]);
     }
 
-    public function setAvailable($theatre, $seatid, $available) {
-//        $seat = Seat::findOrFail($seatid);
+    public function setAvailable($seatid, $available) {
+        $seat = Seat::findOrFail($seatid);
 //        $seat->available = $available;
 //        $seat->update($seat);
-        Seat::where('id', $seatid)->update(['available'=>$available]);
-        $seats = Seat::where('theatre_id', $theatre)->get();
-        return view('theatre/edit', ['seats'=>$seats]);
+        $seat->update(['available'=>$available]);
+        $scene = Scene::findOrFail($seat->scene_id);
+        $seats = Seat::where('scene_id', $seat->scene_id)->get();
+        return view('scenes/edit', ['seats'=>$seats, 'lines'=>$scene->lines, 'rows'=>$scene->rows]);
     }
 
     /*
@@ -320,19 +257,19 @@ class SeatController extends Controller
     }
 
     public function ticketForSeat($seatid) {
-        $response = $this->app->payment->handleNotify(function($notify, $successful){
-            dd($notify.' : '.$successful);
-            return true; // 或者错误消息
-        });
-        dd($response);
-        return $response;
+//        $response = $this->app->payment->handleNotify(function($notify, $successful){
+//            dd($notify.' : '.$successful);
+//            return true; // 或者错误消息
+//        });
+//        dd($response);
+//        return $response;
         $seat = Seat::findOrFail($seatid);
         $playtime = strtotime($seat->playtime);
         $nowtime  = strtotime('now');
 //        dd($seat->theatre);
 
         $code = $this->str_rand(8);
-        $openid = session('wechat.oauth_user')->getId(); // 拿到授权用户资料
+        $openid = 'oVKg11TWiF50IV-hSVX8tUframo0';//session('wechat.oauth_user')->getId(); // 拿到授权用户资料
         $order = \App\Order::create([
             'order_type' => 1,
             'title' => $seat->theatre->name.':'.$seat->description,
@@ -343,7 +280,7 @@ class SeatController extends Controller
             'openid' => $openid,
             'code'   => $code,
             'product_id' => $seat->id,
-            'model' => $seat->theatre->name,
+            'model' => $seat->scene->id,
             'created_by' => 1, //should replaced by auth userid,
             'updated_by' => 1, //should replaced by auth userid,
         ]);
@@ -357,13 +294,29 @@ class SeatController extends Controller
 
 //        $app = new Application(config('wechat'));
         $image = $this->app->material->uploadImage($path);
+//        dd($image->media_id);
         $order->update([
-            'media_id' => $image['media_id'],
-            'media_url'=> $image['url'],
+            'media_id' => $image->media_id,
+            'media_url'=> $image->url,
         ]);
 
-        $app->staff->message(new Text(['content' => '请保留好您的二维码，该二维码将作为您的购票凭证']));
-        $app->staff->message($image)->to($openid)->send();
+        $broadcast = $this->app->broadcast;
+
+//        $notice = $this->app->notice;
+//        $messageId = $notice->send([
+//            'touser' => $openid,
+//            'template_id' => 'template-id',
+//            'url' => 'xxxxx',
+//            'data' => [
+//                //...
+//            ],
+//        ]);
+
+
+        $this->app->staff->message(new Text(['content' => '请保留好您的二维码，该二维码将作为您的购票凭证']))->to($openid)->send();
+        $this->app->staff->message(new Image([
+            'media_id' => $image->media_id,
+        ]))->to($openid)->send();
 
         // Directly output the QR code
 //        header('Content-Type: '.$qrCode->getContentType());
@@ -391,12 +344,10 @@ class SeatController extends Controller
 //        ]);
     }
 
-    public function checkTicket($orderid, $openid, $code) {
-        $order = \App\Order::where('id', $orderid)
-                    ->where('openid', $openid)
-                    ->where('code', $code)->first;
-        if (count($order) > 0) {
-
-        }
+    public function checkTicket($openid, $code) {
+        $order = \App\Order::where('openid', $openid)
+                    ->where('code', $code)->orderBy('created_at', 'desc')->first();
+//        dd($order->detail);
+        return view('orders/check', ['order'=>(strtotime($order->detail) > strtotime('now')) ? $order : null]);
     }
 }

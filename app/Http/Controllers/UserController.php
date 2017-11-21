@@ -33,11 +33,11 @@ class UserController extends Controller
         foreach ($users['data']['openid'] as $openid) {
             $user = $this->wechat->user->get($openid);
             array_push($userList, $user);
-            User::create([
-                'name'   => $user['nickname'],
-                'openid' => $openid,
-                'avatar' => $user['headimgurl'],
-            ]);
+//            User::create([
+//                'name'   => $user['nickname'],
+//                'openid' => $openid,
+//                'avatar' => $user['headimgurl'],
+//            ]);
         }
         return $userList;
     }

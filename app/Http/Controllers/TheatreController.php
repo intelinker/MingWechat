@@ -2,22 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
+use App\Theartre;
 use Illuminate\Http\Request;
-use EasyWeChat\Foundation\Application;
 
-class ArticleController extends Controller
+class TheatreController extends Controller
 {
-    public $app;
-
-    /**
-     * ArticleController constructor.
-     */
-    public function __construct(Application $wechat)
-    {
-        $this->app = $wechat;
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -25,14 +14,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $lists = $this->app->material->lists('news', 0, 10);
-//        foreach ($lists as $articles)
-//            foreach ($articles as $article)
-//                foreach ($article as $art)
-//                    dd($lists['item']);
-//        $articles = Article::orderBy('created_at', 'desc')->paginate(15);
-//        $totalArticle = Article::count();
-        return view('articles/index', ['articles'=>$lists['item']]);//, 'totalArticle'=>$totalArticle]);
+        $theatres = Theartre::orderBy('created_at', 'desc')->paginate(15);
+        $totalTheartres = Theartre::count();
+        return view('theatre/index', ['theatres'=>$theatres, 'totalTheatres'=>$totalTheartres]);
     }
 
     /**
@@ -42,7 +26,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('articles/create');
+        return view('theatre/create');
     }
 
     /**
@@ -53,16 +37,18 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $theatre = Theartre::create($request->except('_token'));
+//        return $theatre;
+        return redirect()->action('TheatreController@show', ['id'=>$theatre->id]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Article  $article
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
+    public function show($id)
     {
         //
     }
@@ -70,10 +56,10 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Article  $article
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Article $article)
+    public function edit($id)
     {
         //
     }
@@ -82,10 +68,10 @@ class ArticleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Article  $article
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $article)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -93,10 +79,10 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Article  $article
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $article)
+    public function destroy($id)
     {
         //
     }
