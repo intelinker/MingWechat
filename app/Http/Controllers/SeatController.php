@@ -150,7 +150,7 @@ class SeatController extends Controller
             $fee = $fee * 500;
         else if ($seat->row == 3)
             $fee = $fee * 3000;
-        
+
         $product = [
             'trade_type'       => 'JSAPI', // JSAPI，NATIVE，APP...
             'body'             => '舍得茶馆座票:'.$seat->description,
