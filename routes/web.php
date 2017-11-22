@@ -29,8 +29,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('seatavailable/{seatid}/{available}', 'SeatController@setAvailable');
     Route::get('editseats/{theatre}', 'SeatController@editSeats');
     Route::get('delmenu/{menuid}', 'MenuController@delMenu');
-    Route::get('ticket', 'OrderController@orderForSeat');
-//    Route::get('ticket/{seat}', 'OrderController@orderForSeat');
+//    Route::get('ticket', 'OrderController@orderForSeat');
+    Route::get('ticket/{seat}', 'OrderController@orderForSeat');
 
     Route::get('checkticket/{openid}/{code}', 'SeatController@checkTicket');
     Route::post('payresponse', 'OrderController@payResponse');

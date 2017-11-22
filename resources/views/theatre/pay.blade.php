@@ -67,7 +67,7 @@
                 break;
                 case 'get_brand_wcpay_request:ok':
 //                alert('支付成功！');
-//                        location.assign("/ticket/" + $seat['id']);
+                        location.assign("/ticket/" + $seat['id']);
                 break;
                 default:
                 alert('ok');
