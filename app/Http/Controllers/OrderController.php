@@ -99,7 +99,7 @@ class OrderController extends Controller
 
     }
 
-    public function orderForSeat($seatid) {
+    public function orderForSeat(/*$seatid*/) {
         $response = $this->app->payment->handleNotify(function($notify, $successful){
 //            dd($notify.' : '.$successful);
             Order::create([

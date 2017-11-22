@@ -13,7 +13,7 @@
 
 
 Route::any('/wechat', 'WechatController@serve');
-Route::get('ticket/{seat}', 'OrderController@orderForSeat');
+Route::get('ticket', 'OrderController@orderForSeat');
 
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'ArticleController@index');
