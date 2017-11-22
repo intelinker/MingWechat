@@ -57,9 +57,7 @@ class MenuController extends Controller
                     ],
                 ],
             ],
-        ];
 
-        $buttons = [
             [
                 "name"       => "茗品荟萃",
                 "sub_button" => [
@@ -81,6 +79,7 @@ class MenuController extends Controller
                 ],
             ],
         ];
+
 //        $buttons = [
 //            [
 //                "type" => "click",
