@@ -143,13 +143,15 @@ class SeatController extends Controller
         $seat = Seat::findOrFail($seatid);
         $user = session('wechat.oauth_user'); // 拿到授权用户资料
         $tradeNo = strtotime('now') * 1990 + 2017;
-        $fee = intval(round(floatval($seat->price)));
+        $fee = intval(round(floatval($seat->price) * 100));
         if ($seat->row == 1)
             $fee = $fee * 100;
         else if ($seat->row == 2)
             $fee = $fee * 500;
         else if ($seat->row == 3)
             $fee = $fee * 3000;
+        else
+            $fee = $fee /100;
         $product = [
             'trade_type'       => 'JSAPI', // JSAPI，NATIVE，APP...
             'body'             => '舍得茶馆座票:'.$seat->description,
