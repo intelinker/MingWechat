@@ -121,7 +121,7 @@ class SeatController extends Controller
     }
 
     public function getSeatsForScens($scene) {
-        $seats = Seat::where('theatre_id', $scene)->get();
+        $seats = Seat::where('scene_id', $scene)->get();
 //        $k = count($seats);
 //        $rows = count(Seat::where('theartre_id', $theartre)->where('line', 1)->get());
 //        $lines = $k/$rows;
@@ -143,12 +143,19 @@ class SeatController extends Controller
         $seat = Seat::findOrFail($seatid);
         $user = session('wechat.oauth_user'); // 拿到授权用户资料
         $tradeNo = strtotime('now') * 1990 + 2017;
+        $fee = intval(round(floatval($seat->price) * 100));
+        if ($seat->row == 1)
+            $fee = $fee * 100;
+        else if ($seat->row == 2)
+            $fee = $fee * 500;
+        else if ($seat->row == 3)
+            $fee = $fee * 3000;
         $product = [
             'trade_type'       => 'JSAPI', // JSAPI，NATIVE，APP...
             'body'             => '舍得茶馆座票:'.$seat->description,
             'detail'           => '开场时间:'.$seat->playtime,
             'out_trade_no'     => $tradeNo,
-            'total_fee'        => intval(round(floatval($seat->price) * 100)),
+            'total_fee'        => $fee, //intval(round(floatval($seat->price) * 100)),
             'openid'           => $user->getId(),
             'notify_url'       => 'http://ming.cure4.net/ticket', //'.$seat->id //'https://pay.weixin.qq.com/wxpay/pay.action', // 支付结果通知网址，如果不设置则会使用配置里的默认地址，我就没有在这里配，因为在.env内已经配置了。
             // ...
