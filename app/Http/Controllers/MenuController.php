@@ -58,6 +58,29 @@ class MenuController extends Controller
                 ],
             ],
         ];
+
+        $buttons = [
+            [
+                "name"       => "茗品荟萃",
+                "sub_button" => [
+                    [
+                        "type" => "view",
+                        "name" => "在线商城",
+                        "url"  => "https://weidian.com/index.html?spider=wv6a7i.ut1ksv90.7wfevgjsoi.5&userid=1264490847&wfr=wechatofficial_weidian_menu0101&spider_token=e36d"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "本月推荐",
+                        "url"  => "V1001_GOOD"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "寻茶记",
+                        "url"  => "V1001_GOOD"
+                    ],
+                ],
+            ],
+        ];
 //        $buttons = [
 //            [
 //                "type" => "click",
@@ -132,7 +155,7 @@ class MenuController extends Controller
 ////                    [
 ////                        "type" => "view",
 ////                        "name" => "在线商城",
-////                        "url"  => "http://www.soso.com/"
+////                        "url"  => "https://weidian.com/index.html?spider=wv6a7i.ut1ksv90.7wfevgjsoi.5&userid=1264490847&wfr=wechatofficial_weidian_menu0101&spider_token=e36d"
 ////                    ],
 ////                    [
 ////                        "type" => "view",
