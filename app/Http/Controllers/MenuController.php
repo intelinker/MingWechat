@@ -64,7 +64,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "在线商城",
-                        "url"  => "https://weidian.com/index.html?spider=wv6a7i.ut1ksv90.7wfevgjsoi.5&userid=1264490847&wfr=wechatofficial_weidian_menu0101&spider_token=e36d"
+                        "url"  => "http://ming.cure4net.com/weidian"
                     ],
                     [
                         "type" => "view",

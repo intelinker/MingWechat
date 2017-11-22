@@ -150,4 +150,11 @@ class WechatController extends Controller
     public function remarkUser($openid, $mark) {
         $this->wechat->user->remark($openid, $mark);
     }
+
+    public function goToWeidian() {
+        $url="https://weidian.com/index.html?spider=wv6a7i.ut1ksv90.7wfevgjsoi.5&userid=1264490847&wfr=wechatofficial_weidian_menu0101&spider_token=e36d";
+        echo "<script language=\"javascript\">";
+        echo "location.href=\"$url\"";
+        echo "</script>";
+    }
 }
