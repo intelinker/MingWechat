@@ -150,7 +150,7 @@ class SeatController extends Controller
             'out_trade_no'     => $tradeNo,
             'total_fee'        => intval(round(floatval($seat->price) * 100)),
             'openid'           => $user->getId(),
-            'notify_url'       => 'http://ming.cure4.net/ticket/'.$seat->id //'https://pay.weixin.qq.com/wxpay/pay.action', // 支付结果通知网址，如果不设置则会使用配置里的默认地址，我就没有在这里配，因为在.env内已经配置了。
+            'notify_url'       => 'http://ming.cure4.net/ticket', //'.$seat->id //'https://pay.weixin.qq.com/wxpay/pay.action', // 支付结果通知网址，如果不设置则会使用配置里的默认地址，我就没有在这里配，因为在.env内已经配置了。
             // ...
         ];
 //        创建订单
