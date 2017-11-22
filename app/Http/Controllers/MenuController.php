@@ -64,7 +64,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "在线商城",
-                        "url"  => "http://ming.cure4net.com/weidian"
+                        "url"  => "http://ming.cure4net.com"
                     ],
                     [
                         "type" => "view",
