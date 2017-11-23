@@ -53,7 +53,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "往期集锦",
-                        "url"  => "http://v.qq.com/"
+                        "url"  => "https://mp.weixin.qq.com/s?__biz=MzU3NzA2MzUwOA==&mid=100000078&idx=1&sn=c4ad1118298efed4ba68684491dcf28f&chksm=7d0b1e754a7c9763cd60979743e79efbdb023b1361a02418901271398c6eade2dd757d53b5e2#rd"
                     ],
                 ],
             ],
